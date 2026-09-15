@@ -1,5 +1,4 @@
-import { ChartPanel } from "@/components/ChartPanel";
-import { PdChecker } from "@/components/PdChecker";
+import { TrackerHome } from "@/components/TrackerHome";
 import Link from "next/link";
 
 export default function Home() {
@@ -13,9 +12,11 @@ export default function Home() {
           Track Visa Bulletin priority dates
         </h1>
         <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">
-          Interactive historical charts for Table A (Final Action Dates) and
-          Table B (Dates for Filing), plus a PD checker. Historical data curated from official DOS Visa Bulletins
-          (October 2023 through August 2026), with monthly automated updates.
+          Interactive historical charts with Table A (Final Action Dates) and
+          Table B (Dates for Filing) on the same trend line, a priority-date
+          reference, plus a PD checker. Historical data curated from official
+          DOS Visa Bulletins (October 2023 through August 2026), with monthly
+          automated updates.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
           <a
@@ -33,8 +34,7 @@ export default function Home() {
         </div>
       </section>
 
-      <ChartPanel />
-      <PdChecker compact />
+      <TrackerHome />
     </main>
   );
 }

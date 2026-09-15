@@ -5,8 +5,9 @@ import {
   CHARGEABILITIES,
   CHARGEABILITY_COLORS,
   CHARGEABILITY_LABELS,
-  TABLE_LABELS,
+  formatIsoDate,
   formatTickDate,
+  isIsoDate,
 } from "@/lib/format";
 import type { Category, Chargeability, SeriesPoint, TableKind } from "@/lib/types";
 import { useEffect, useMemo, useState } from "react";
@@ -15,6 +16,7 @@ import {
   Legend,
   Line,
   LineChart,
+  ReferenceLine,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -22,7 +24,6 @@ import {
 } from "recharts";
 
 interface SeriesResponse {
-  table: TableKind;
   category: Category;
   series: {
     table: TableKind;
@@ -35,29 +36,43 @@ interface SeriesResponse {
 type ChartRow = {
   id: string;
   title: string;
-} & Record<string, string | number | null>;
+  A: number | null;
+  B: number | null;
+  A_label: string | null;
+  B_label: string | null;
+};
 
-export function ChartPanel() {
-  const [table, setTable] = useState<TableKind>("A");
-  const [category, setCategory] = useState<Category>("EB-2");
-  const [selected, setSelected] = useState<Chargeability[]>(["CHINA"]);
+const TABLE_A_COLOR = "#0f766e";
+const TABLE_B_COLOR = "#2563eb";
+const PD_COLOR = "#e11d48";
+
+const TABLE_A_NAME = "Table A (Final Action)";
+const TABLE_B_NAME = "Table B (Dates for Filing)";
+const PD_NAME = "Priority Date";
+
+export function ChartPanel({
+  category,
+  chargeability,
+  pd,
+  onCategoryChange,
+  onChargeabilityChange,
+  onPdChange,
+}: {
+  category: Category;
+  chargeability: Chargeability;
+  pd: string;
+  onCategoryChange: (c: Category) => void;
+  onChargeabilityChange: (c: Chargeability) => void;
+  onPdChange: (pd: string) => void;
+}) {
   const [payload, setPayload] = useState<SeriesResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const chargeabilityQuery = selected.join(",");
-
   useEffect(() => {
-    if (selected.length === 0) {
-      setPayload(null);
-      setLoading(false);
-      setError(null);
-      return;
-    }
-
     const ac = new AbortController();
     setLoading(true);
-    const url = `/api/series?table=${table}&category=${encodeURIComponent(category)}&chargeability=${encodeURIComponent(chargeabilityQuery)}`;
+    const url = `/api/series?table=A,B&category=${encodeURIComponent(category)}&chargeability=${encodeURIComponent(chargeability)}`;
 
     fetch(url, { signal: ac.signal })
       .then(async (res) => {
@@ -73,41 +88,67 @@ export function ChartPanel() {
       .finally(() => setLoading(false));
 
     return () => ac.abort();
-  }, [table, category, chargeabilityQuery, selected.length]);
+  }, [category, chargeability]);
 
   const chartData = useMemo(() => {
-    if (!payload?.series.length) return [];
+    if (!payload?.series.length) return [] as ChartRow[];
     const byId = new Map<string, ChartRow>();
     for (const s of payload.series) {
       for (const p of s.points) {
-        const row = byId.get(p.id) ?? { id: p.id, title: p.title };
-        row[s.chargeability] = p.value;
-        row[`${s.chargeability}_label`] = p.cutoffLabel;
+        const row =
+          byId.get(p.id) ??
+          ({
+            id: p.id,
+            title: p.title,
+            A: null,
+            B: null,
+            A_label: null,
+            B_label: null,
+          } satisfies ChartRow);
+        if (s.table === "A") {
+          row.A = p.value;
+          row.A_label = p.cutoffLabel;
+        } else {
+          row.B = p.value;
+          row.B_label = p.cutoffLabel;
+        }
         byId.set(p.id, row);
       }
     }
     return [...byId.values()];
   }, [payload]);
 
-  function toggleChargeability(ch: Chargeability) {
-    setSelected((prev) =>
-      prev.includes(ch) ? prev.filter((x) => x !== ch) : [...prev, ch],
-    );
-  }
+  const pdMs = useMemo(() => {
+    if (!isIsoDate(pd)) return null;
+    const [y, m, d] = pd.split("-").map(Number);
+    return Date.UTC(y, m - 1, d);
+  }, [pd]);
+
+  const yDomain = useMemo(() => {
+    const values: number[] = [];
+    for (const row of chartData) {
+      if (typeof row.A === "number") values.push(row.A);
+      if (typeof row.B === "number") values.push(row.B);
+    }
+    if (typeof pdMs === "number") values.push(pdMs);
+    if (values.length === 0) return ["auto", "auto"] as const;
+    const min = Math.min(...values);
+    const max = Math.max(...values);
+    const pad = Math.max((max - min) * 0.08, 45 * 24 * 60 * 60 * 1000);
+    return [min - pad, max + pad] as [number, number];
+  }, [chartData, pdMs]);
 
   return (
     <section id="charts" className="scroll-mt-20">
-      <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <h2 className="text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl">
-            Historical cut-off dates
-          </h2>
-          <p className="mt-1 text-sm text-slate-600">
-            Employment-based Visa Bulletin dates. Current (C) is plotted as the
-            bulletin month; Unavailable (U) is a gap.
-          </p>
-        </div>
-        <TableToggle value={table} onChange={setTable} />
+      <div>
+        <h2 className="text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl">
+          Priority date trend
+        </h2>
+        <p className="mt-1 text-sm text-slate-600">
+          Table A (Final Action) and Table B (Dates for Filing) on one chart.
+          Current (C) plots at the bulletin month end; Unavailable (U) leaves a
+          gap. Your priority date is the horizontal reference line.
+        </p>
       </div>
 
       <div className="mt-5 flex flex-col gap-4">
@@ -116,7 +157,7 @@ export function ChartPanel() {
             <Pill
               key={cat}
               active={category === cat}
-              onClick={() => setCategory(cat)}
+              onClick={() => onCategoryChange(cat)}
             >
               {cat}
             </Pill>
@@ -126,27 +167,41 @@ export function ChartPanel() {
           {CHARGEABILITIES.map((ch) => (
             <Pill
               key={ch}
-              active={selected.includes(ch)}
-              onClick={() => toggleChargeability(ch)}
+              active={chargeability === ch}
+              onClick={() => onChargeabilityChange(ch)}
               color={CHARGEABILITY_COLORS[ch]}
             >
               {CHARGEABILITY_LABELS[ch]}
             </Pill>
           ))}
         </FilterRow>
+        <FilterRow label="Priority date">
+          <input
+            type="date"
+            className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-900 outline-none ring-teal-600/20 focus:ring-4"
+            value={pd}
+            onChange={(e) => onPdChange(e.target.value)}
+          />
+        </FilterRow>
       </div>
 
       <div className="mt-5 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm sm:p-5">
         <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
           <p className="text-sm font-medium text-slate-800">
-            {TABLE_LABELS[table]} · {category}
+            {CHARGEABILITY_LABELS[chargeability]} · {category}
+            {pdMs != null ? (
+              <span className="font-normal text-slate-500">
+                {" "}
+                · PD {formatIsoDate(pd)}
+              </span>
+            ) : null}
           </p>
-          <p className="text-xs text-slate-500">X: bulletin month · Y: cut-off date</p>
+          <p className="text-xs text-slate-500">
+            X: bulletin month · Y: cut-off date
+          </p>
         </div>
 
-        {selected.length === 0 ? (
-          <EmptyState message="Select at least one chargeability to plot a series." />
-        ) : loading && !payload ? (
+        {loading && !payload ? (
           <EmptyState message="Loading chart data…" />
         ) : error ? (
           <EmptyState message={error} tone="error" />
@@ -168,31 +223,54 @@ export function ChartPanel() {
                 />
                 <YAxis
                   type="number"
-                  domain={["auto", "auto"]}
+                  domain={yDomain}
                   tickFormatter={(v: number) => formatTickDate(v)}
                   tick={{ fontSize: 11, fill: "#64748b" }}
                   width={72}
+                  allowDataOverflow
                 />
-                <Tooltip content={<ChartTooltip />} />
+                <Tooltip content={<ChartTooltip pd={pd} pdMs={pdMs} />} />
                 <Legend
                   wrapperStyle={{ fontSize: 12, paddingTop: 8 }}
-                  formatter={(value) =>
-                    CHARGEABILITY_LABELS[value as Chargeability] ?? value
-                  }
+                  content={<ChartLegend />}
                 />
-                {selected.map((ch) => (
-                  <Line
-                    key={ch}
-                    type="monotone"
-                    dataKey={ch}
-                    name={ch}
-                    stroke={CHARGEABILITY_COLORS[ch]}
-                    strokeWidth={2.25}
-                    dot={false}
-                    connectNulls={false}
-                    activeDot={{ r: 4 }}
+                {pdMs != null ? (
+                  <ReferenceLine
+                    y={pdMs}
+                    stroke={PD_COLOR}
+                    strokeWidth={1.75}
+                    strokeDasharray="6 4"
+                    ifOverflow="extendDomain"
+                    label={{
+                      value: "PD",
+                      position: "insideTopRight",
+                      fill: PD_COLOR,
+                      fontSize: 11,
+                      fontWeight: 600,
+                    }}
                   />
-                ))}
+                ) : null}
+                <Line
+                  type="monotone"
+                  dataKey="A"
+                  name={TABLE_A_NAME}
+                  stroke={TABLE_A_COLOR}
+                  strokeWidth={2.25}
+                  dot={false}
+                  connectNulls={false}
+                  activeDot={{ r: 4 }}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="B"
+                  name={TABLE_B_NAME}
+                  stroke={TABLE_B_COLOR}
+                  strokeWidth={2.25}
+                  strokeDasharray="4 2"
+                  dot={false}
+                  connectNulls={false}
+                  activeDot={{ r: 4 }}
+                />
               </LineChart>
             </ResponsiveContainer>
           </div>
@@ -202,30 +280,31 @@ export function ChartPanel() {
   );
 }
 
-function TableToggle({
-  value,
-  onChange,
-}: {
-  value: TableKind;
-  onChange: (t: TableKind) => void;
-}) {
+function ChartLegend() {
+  const items = [
+    { name: TABLE_A_NAME, color: TABLE_A_COLOR, dash: undefined as string | undefined },
+    { name: TABLE_B_NAME, color: TABLE_B_COLOR, dash: "4 2" },
+    { name: PD_NAME, color: PD_COLOR, dash: "6 4" },
+  ];
   return (
-    <div className="inline-flex rounded-lg border border-slate-200 bg-slate-100 p-0.5 text-sm font-medium">
-      {(["A", "B"] as const).map((t) => (
-        <button
-          key={t}
-          type="button"
-          onClick={() => onChange(t)}
-          className={`rounded-md px-3 py-1.5 transition ${
-            value === t
-              ? "bg-white text-slate-900 shadow-sm"
-              : "text-slate-600 hover:text-slate-900"
-          }`}
-        >
-          {t === "A" ? "Table A" : "Table B"}
-        </button>
+    <ul className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 pt-2 text-xs text-slate-700">
+      {items.map((item) => (
+        <li key={item.name} className="inline-flex items-center gap-1.5">
+          <svg width="22" height="8" aria-hidden>
+            <line
+              x1="0"
+              y1="4"
+              x2="22"
+              y2="4"
+              stroke={item.color}
+              strokeWidth="2.25"
+              strokeDasharray={item.dash}
+            />
+          </svg>
+          <span>{item.name}</span>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
 
@@ -299,43 +378,73 @@ function ChartTooltip({
   active,
   payload,
   label,
+  pd,
+  pdMs,
 }: {
   active?: boolean;
   payload?: Array<{
-    name: string;
+    dataKey?: string | number;
+    name?: string;
     color: string;
-    payload: Record<string, string | number | null>;
+    payload: ChartRow;
   }>;
   label?: string;
+  pd: string;
+  pdMs: number | null;
 }) {
   if (!active || !payload?.length) return null;
-  const title = payload[0]?.payload.title;
+  const row = payload[0]?.payload;
+  const title = row?.title;
+
+  const items: { key: string; name: string; color: string; display: string }[] =
+    [];
+
+  for (const item of payload) {
+    const key = String(item.dataKey ?? "");
+    if (key !== "A" && key !== "B") continue;
+    const raw = key === "A" ? row?.A_label : row?.B_label;
+    const display =
+      raw === "C"
+        ? "Current (C)"
+        : raw === "U"
+          ? "Unavailable (U)"
+          : raw
+            ? formatIsoDate(String(raw))
+            : "—";
+    items.push({
+      key,
+      name: key === "A" ? TABLE_A_NAME : TABLE_B_NAME,
+      color: item.color,
+      display,
+    });
+  }
+
   return (
     <div className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs shadow-lg">
       <p className="font-semibold text-slate-900">{String(title ?? label)}</p>
       <ul className="mt-1 space-y-0.5">
-        {payload.map((item) => {
-          const key = `${item.name}_label`;
-          const raw = item.payload[key];
-          const display =
-            raw === "C"
-              ? "Current (C)"
-              : raw === "U"
-                ? "Unavailable (U)"
-                : String(raw ?? "—");
-          return (
-            <li key={item.name} className="flex items-center gap-2">
-              <span
-                className="h-2 w-2 rounded-full"
-                style={{ backgroundColor: item.color }}
-              />
-              <span className="text-slate-600">
-                {CHARGEABILITY_LABELS[item.name as Chargeability] ?? item.name}
-              </span>
-              <span className="font-medium text-slate-900">{display}</span>
-            </li>
-          );
-        })}
+        {items.map((item) => (
+          <li key={item.key} className="flex items-center gap-2">
+            <span
+              className="h-2 w-2 rounded-full"
+              style={{ backgroundColor: item.color }}
+            />
+            <span className="text-slate-600">{item.name}</span>
+            <span className="font-medium text-slate-900">{item.display}</span>
+          </li>
+        ))}
+        {pdMs != null ? (
+          <li className="flex items-center gap-2 border-t border-slate-100 pt-1 mt-1">
+            <span
+              className="h-2 w-2 rounded-full"
+              style={{ backgroundColor: PD_COLOR }}
+            />
+            <span className="text-slate-600">{PD_NAME}</span>
+            <span className="font-medium text-slate-900">
+              {formatIsoDate(pd)}
+            </span>
+          </li>
+        ) : null}
       </ul>
     </div>
   );

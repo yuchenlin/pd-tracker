@@ -21,11 +21,11 @@ npm run scrape:bulletin   # fetch/parse latest bulletin into JSON (see below)
 
 ## What you get
 
-- **Charts** (`/`) — Recharts line charts of monthly cut-off dates. Toggle **Table A** (Final Action Dates) vs **Table B** (Dates for Filing); filter by EB-1…EB-5 and China / India / Mexico / Philippines / ROW.
+- **Charts** (`/`) — Recharts line chart of monthly cut-off dates with **Table A** (Final Action Dates) and **Table B** (Dates for Filing) as two series on the same plot, plus a horizontal **priority date** reference line. Filter by EB-1…EB-5 and China / India / Mexico / Philippines / ROW.
 - **PD Checker** (`/` and `/checker`) — Demo case pre-filled: **China, PD 2024-07-16** (not paywalled). Shows whether that PD is current for Table A and Table B.
 - **JSON API** — CORS-enabled (`Access-Control-Allow-Origin: *`) for a future iOS client.
 
-Defaults: **Table A**, **EB-2**, **China**.
+Defaults: **EB-2**, **China**, **PD 2024-07-16** (both Table A and Table B plotted).
 
 ## Data schema
 
@@ -41,7 +41,7 @@ Historical months are curated from **official DOS Visa Bulletin** employment tab
 | `"U"` | **Unavailable** — visa numbers unavailable for the period |
 | `"YYYY-MM-DD"` | Cut-off date (ISO) |
 
-Charts plot `null` (C) at the bulletin month and **omit** `U` points so unavailable months leave a gap.
+Charts plot `null` (C) at the **bulletin month end** and **omit** `U` points so unavailable months leave a gap (`connectNulls={false}`).
 
 ### Table A / Table B vs USCIS AOS chart
 
@@ -98,7 +98,7 @@ Do not collapse USCIS chart selection into the historical A/B series.
 | --- | --- |
 | `GET /api/bulletins` | List bulletin summaries (includes `uscisAosChart` when set) |
 | `GET /api/bulletins/[id]` | Full bulletin (`2024-07`) |
-| `GET /api/series?table=A&category=EB-2&chargeability=CHINA` | Time series for charts (comma-separated chargeabilities OK) |
+| `GET /api/series?table=A,B&category=EB-2&chargeability=CHINA` | Time series for charts (`table=A`, `B`, `A,B`, or `both`; comma-separated chargeabilities OK) |
 | `GET /api/check?table=A&category=EB-2&chargeability=CHINA&pd=2024-07-16` | PD current / not-current / unavailable |
 
 ## Monthly updates (GitHub Action)

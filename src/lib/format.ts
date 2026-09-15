@@ -78,7 +78,7 @@ export function formatIsoDate(iso: string): string {
   return `${monthName(m)} ${d}, ${y}`;
 }
 
-/** Plot Current as the bulletin month so the line sits at "now". */
+/** Plot Current (C) as the bulletin month end; U is omitted (gap). */
 export function cutoffToValue(
   cutoff: Cutoff,
   year: number,
@@ -86,7 +86,8 @@ export function cutoffToValue(
 ): number | null {
   if (cutoff === "U") return null;
   if (cutoff === null) {
-    return Date.UTC(year, month - 1, 1);
+    // Date.UTC(year, month, 0) = last day of `month` (1-indexed bulletin month)
+    return Date.UTC(year, month, 0);
   }
   const [y, m, d] = cutoff.split("-").map(Number);
   if (!y || !m || !d) return null;

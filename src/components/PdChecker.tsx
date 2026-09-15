@@ -35,13 +35,49 @@ interface CheckResponse {
 
 const DEFAULT_PD = "2024-07-16";
 
-export function PdChecker({ compact = false }: { compact?: boolean }) {
-  const [category, setCategory] = useState<Category>("EB-2");
-  const [chargeability, setChargeability] = useState<Chargeability>("CHINA");
-  const [pd, setPd] = useState(DEFAULT_PD);
+export function PdChecker({
+  compact = false,
+  category: controlledCategory,
+  chargeability: controlledChargeability,
+  pd: controlledPd,
+  onCategoryChange,
+  onChargeabilityChange,
+  onPdChange,
+}: {
+  compact?: boolean;
+  category?: Category;
+  chargeability?: Chargeability;
+  pd?: string;
+  onCategoryChange?: (c: Category) => void;
+  onChargeabilityChange?: (c: Chargeability) => void;
+  onPdChange?: (pd: string) => void;
+}) {
+  const [localCategory, setLocalCategory] = useState<Category>("EB-2");
+  const [localChargeability, setLocalChargeability] =
+    useState<Chargeability>("CHINA");
+  const [localPd, setLocalPd] = useState(DEFAULT_PD);
   const [data, setData] = useState<CheckResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const category = controlledCategory ?? localCategory;
+  const chargeability = controlledChargeability ?? localChargeability;
+  const pd = controlledPd ?? localPd;
+
+  function setCategory(next: Category) {
+    onCategoryChange?.(next);
+    if (controlledCategory === undefined) setLocalCategory(next);
+  }
+
+  function setChargeability(next: Chargeability) {
+    onChargeabilityChange?.(next);
+    if (controlledChargeability === undefined) setLocalChargeability(next);
+  }
+
+  function setPd(next: string) {
+    onPdChange?.(next);
+    if (controlledPd === undefined) setLocalPd(next);
+  }
 
   useEffect(() => {
     const ac = new AbortController();
@@ -74,6 +110,9 @@ export function PdChecker({ compact = false }: { compact?: boolean }) {
           Demo case is pre-filled:{" "}
           <strong>China, priority date {DEFAULT_PD}</strong>. A date is current
           if the cut-off is C, or if your PD is on or before the cut-off.
+          {onPdChange ? (
+            <> Changing the PD here also moves the chart reference line.</>
+          ) : null}
         </p>
       </div>
 

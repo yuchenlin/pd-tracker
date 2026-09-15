@@ -36,6 +36,10 @@ interface SeriesResponse {
 type ChartRow = {
   id: string;
   title: string;
+  year: number;
+  month: number;
+  /** Bulletin month-end ms — calendar / “y = x” diagonal. */
+  natural: number;
   A: number | null;
   B: number | null;
   A_label: string | null;
@@ -49,6 +53,17 @@ const PD_COLOR = "#e11d48";
 const TABLE_A_NAME = "Table A (Final Action)";
 const TABLE_B_NAME = "Table B (Dates for Filing)";
 const PD_NAME = "Priority Date";
+const NATURAL_NAME = "Natural time";
+const NATURAL_COLOR = "#94a3b8";
+
+type RangeKey = "all" | "2y" | "1y" | "6m";
+
+const RANGE_OPTIONS: { key: RangeKey; label: string; months: number | null }[] = [
+  { key: "2y", label: "2 years", months: 24 },
+  { key: "1y", label: "1 year", months: 12 },
+  { key: "6m", label: "6 months", months: 6 },
+  { key: "all", label: "All", months: null },
+];
 
 export function ChartPanel({
   category,
@@ -68,6 +83,7 @@ export function ChartPanel({
   const [payload, setPayload] = useState<SeriesResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [range, setRange] = useState<RangeKey>("2y");
 
   useEffect(() => {
     const ac = new AbortController();
@@ -90,7 +106,7 @@ export function ChartPanel({
     return () => ac.abort();
   }, [category, chargeability]);
 
-  const chartData = useMemo(() => {
+  const allChartData = useMemo(() => {
     if (!payload?.series.length) return [] as ChartRow[];
     const byId = new Map<string, ChartRow>();
     for (const s of payload.series) {
@@ -100,6 +116,9 @@ export function ChartPanel({
           ({
             id: p.id,
             title: p.title,
+            year: p.year,
+            month: p.month,
+            natural: Date.UTC(p.year, p.month, 0),
             A: null,
             B: null,
             A_label: null,
@@ -115,8 +134,21 @@ export function ChartPanel({
         byId.set(p.id, row);
       }
     }
-    return [...byId.values()];
+    return [...byId.values()].sort((a, b) => a.id.localeCompare(b.id));
   }, [payload]);
+
+  const chartData = useMemo(() => {
+    const months = RANGE_OPTIONS.find((o) => o.key === range)?.months ?? null;
+    if (months == null || allChartData.length <= months) return allChartData;
+    return allChartData.slice(-months);
+  }, [allChartData, range]);
+
+  const xInterval = useMemo(() => {
+    if (chartData.length <= 8) return 0;
+    if (chartData.length <= 14) return 1;
+    if (chartData.length <= 24) return 2;
+    return 3;
+  }, [chartData.length]);
 
   const pdMs = useMemo(() => {
     if (!isIsoDate(pd)) return null;
@@ -129,6 +161,7 @@ export function ChartPanel({
     for (const row of chartData) {
       if (typeof row.A === "number") values.push(row.A);
       if (typeof row.B === "number") values.push(row.B);
+      values.push(row.natural);
     }
     if (typeof pdMs === "number") values.push(pdMs);
     if (values.length === 0) return ["auto", "auto"] as const;
@@ -146,8 +179,10 @@ export function ChartPanel({
         </h2>
         <p className="mt-1 text-sm text-slate-600">
           Table A (Final Action) and Table B (Dates for Filing) on one chart.
-          Current (C) plots at the bulletin month end; Unavailable (U) leaves a
-          gap. Your priority date is the horizontal reference line.
+          The dashed gray diagonal is natural / calendar time (bulletin month
+          end on both axes). Current (C) plots at the bulletin month end;
+          Unavailable (U) leaves a gap. Your priority date is the horizontal
+          reference line.
         </p>
       </div>
 
@@ -183,6 +218,17 @@ export function ChartPanel({
             onChange={(e) => onPdChange(e.target.value)}
           />
         </FilterRow>
+        <FilterRow label="Range">
+          {RANGE_OPTIONS.map((opt) => (
+            <Pill
+              key={opt.key}
+              active={range === opt.key}
+              onClick={() => setRange(opt.key)}
+            >
+              {opt.label}
+            </Pill>
+          ))}
+        </FilterRow>
       </div>
 
       <div className="mt-5 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm sm:p-5">
@@ -215,7 +261,7 @@ export function ChartPanel({
                 <CartesianGrid stroke="#e2e8f0" strokeDasharray="3 3" />
                 <XAxis
                   dataKey="id"
-                  interval={2}
+                  interval={xInterval}
                   tick={{ fontSize: 11, fill: "#64748b" }}
                   angle={-35}
                   textAnchor="end"
@@ -251,6 +297,18 @@ export function ChartPanel({
                   />
                 ) : null}
                 <Line
+                  type="linear"
+                  dataKey="natural"
+                  name={NATURAL_NAME}
+                  stroke={NATURAL_COLOR}
+                  strokeWidth={1.75}
+                  strokeDasharray="2 4"
+                  dot={false}
+                  connectNulls
+                  legendType="plainline"
+                  isAnimationActive={false}
+                />
+                <Line
                   type="monotone"
                   dataKey="A"
                   name={TABLE_A_NAME}
@@ -284,6 +342,7 @@ function ChartLegend() {
   const items = [
     { name: TABLE_A_NAME, color: TABLE_A_COLOR, dash: undefined as string | undefined },
     { name: TABLE_B_NAME, color: TABLE_B_COLOR, dash: "4 2" },
+    { name: NATURAL_NAME, color: NATURAL_COLOR, dash: "2 4" },
     { name: PD_NAME, color: PD_COLOR, dash: "6 4" },
   ];
   return (
@@ -433,6 +492,18 @@ function ChartTooltip({
             <span className="font-medium text-slate-900">{item.display}</span>
           </li>
         ))}
+        {row?.natural != null ? (
+          <li className="flex items-center gap-2 border-t border-slate-100 pt-1 mt-1">
+            <span
+              className="h-2 w-2 rounded-full"
+              style={{ backgroundColor: NATURAL_COLOR }}
+            />
+            <span className="text-slate-600">{NATURAL_NAME}</span>
+            <span className="font-medium text-slate-900">
+              {formatTickDate(row.natural)}
+            </span>
+          </li>
+        ) : null}
         {pdMs != null ? (
           <li className="flex items-center gap-2 border-t border-slate-100 pt-1 mt-1">
             <span

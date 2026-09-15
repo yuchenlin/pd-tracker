@@ -25,7 +25,7 @@ npm run scrape:bulletin   # fetch/parse latest bulletin into JSON (see below)
 - **PD Checker** (`/` and `/checker`) — Demo case pre-filled: **EB-1, China (mainland), PD 2024-07-16** (not paywalled). Shows whether that PD is current for Table A and Table B.
 - **JSON API** — CORS-enabled (`Access-Control-Allow-Origin: *`) for a future iOS client.
 
-Defaults: **EB-1**, **China (mainland)**, **PD 2024-07-16** (both Table A and Table B plotted).
+Defaults: **EB-1**, **China (mainland)**, **PD 2024-07-16**, chart range **2 years** (both Table A and Table B plotted; dashed gray diagonal = natural/calendar time).
 
 ## Data schema
 

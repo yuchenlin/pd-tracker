@@ -1,0 +1,2990 @@
+{
+  "schemaVersion": 2,
+  "source": "Curated from official U.S. Department of State Visa Bulletin employment-based tables (public-domain U.S. government works). Seed months are machine-readable reconstructions of travel.state.gov HTML archives; always verify against the official bulletin.",
+  "notes": {
+    "cutoffEncoding": "null = C (Current); \"U\" = Unavailable; ISO YYYY-MM-DD = cut-off date",
+    "tables": "A = Final Action Dates; B = Dates for Filing. These are separate historical series.",
+    "uscisAosChart": "Optional per-bulletin field from USCIS Adjustment of Status filing-chart guidance (which DOS chart AOS filers should use that month). Independent of Table A/B history. Values: \"A\", \"B\", or null if unknown/not scraped.",
+    "categories": "EB-1..EB-5 map to 1st..5th Unreserved preference rows (Other Workers and EB-5 set-asides omitted in MVP)",
+    "chargeabilities": "ROW = All Chargeability Areas Except Those Listed",
+    "updates": "Monthly GitHub Action scrapes new DOS bulletins (and optionally USCIS chart page) \u2014 see .github/workflows/update-visa-bulletin.yml"
+  },
+  "updatedAt": "2026-09-15",
+  "bulletins": [
+    {
+      "id": "2023-10",
+      "year": 2023,
+      "month": 10,
+      "published": "2023-10-01",
+      "title": "Visa Bulletin For October 2023",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2024/visa-bulletin-for-october-2023.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-02-15",
+            "INDIA": "2017-01-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2022-07-08",
+            "CHINA": "2019-10-01",
+            "INDIA": "2012-01-01",
+            "MEXICO": "2022-07-08",
+            "PHILIPPINES": "2022-07-08"
+          },
+          "EB-3": {
+            "ROW": "2021-12-01",
+            "CHINA": "2020-01-01",
+            "INDIA": "2012-05-01",
+            "MEXICO": "2021-12-01",
+            "PHILIPPINES": "2021-12-01"
+          },
+          "EB-4": {
+            "ROW": "2019-01-01",
+            "CHINA": "2019-01-01",
+            "INDIA": "2019-01-01",
+            "MEXICO": "2019-01-01",
+            "PHILIPPINES": "2019-01-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2015-10-01",
+            "INDIA": "2018-12-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-08-01",
+            "INDIA": "2019-07-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-01-01",
+            "CHINA": "2020-01-01",
+            "INDIA": "2012-05-15",
+            "MEXICO": "2023-01-01",
+            "PHILIPPINES": "2023-01-01"
+          },
+          "EB-3": {
+            "ROW": "2023-02-01",
+            "CHINA": "2020-09-01",
+            "INDIA": "2012-08-01",
+            "MEXICO": "2023-02-01",
+            "PHILIPPINES": "2023-01-01"
+          },
+          "EB-4": {
+            "ROW": "2019-03-01",
+            "CHINA": "2019-03-01",
+            "INDIA": "2019-03-01",
+            "MEXICO": "2019-03-01",
+            "PHILIPPINES": "2019-03-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2017-01-01",
+            "INDIA": "2022-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2023-11",
+      "year": 2023,
+      "month": 11,
+      "published": "2023-11-01",
+      "title": "Visa Bulletin For November 2023",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2024/visa-bulletin-for-november-2023.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-02-15",
+            "INDIA": "2017-01-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2022-07-15",
+            "CHINA": "2019-10-01",
+            "INDIA": "2012-01-01",
+            "MEXICO": "2022-07-15",
+            "PHILIPPINES": "2022-07-15"
+          },
+          "EB-3": {
+            "ROW": "2021-12-01",
+            "CHINA": "2020-01-01",
+            "INDIA": "2012-05-01",
+            "MEXICO": "2021-12-01",
+            "PHILIPPINES": "2021-12-01"
+          },
+          "EB-4": {
+            "ROW": "2019-01-01",
+            "CHINA": "2019-01-01",
+            "INDIA": "2019-01-01",
+            "MEXICO": "2019-01-01",
+            "PHILIPPINES": "2019-01-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2015-10-01",
+            "INDIA": "2018-12-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-08-01",
+            "INDIA": "2019-07-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-01-01",
+            "CHINA": "2020-01-01",
+            "INDIA": "2012-05-15",
+            "MEXICO": "2023-01-01",
+            "PHILIPPINES": "2023-01-01"
+          },
+          "EB-3": {
+            "ROW": "2023-02-01",
+            "CHINA": "2020-09-01",
+            "INDIA": "2012-08-01",
+            "MEXICO": "2023-02-01",
+            "PHILIPPINES": "2023-01-01"
+          },
+          "EB-4": {
+            "ROW": "2019-03-01",
+            "CHINA": "2019-03-01",
+            "INDIA": "2019-03-01",
+            "MEXICO": "2019-03-01",
+            "PHILIPPINES": "2019-03-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2017-01-01",
+            "INDIA": "2022-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2023-12",
+      "year": 2023,
+      "month": 12,
+      "published": "2023-12-01",
+      "title": "Visa Bulletin For December 2023",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2024/visa-bulletin-for-december-2023.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-02-15",
+            "INDIA": "2017-01-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2022-07-15",
+            "CHINA": "2019-10-22",
+            "INDIA": "2012-01-01",
+            "MEXICO": "2022-07-15",
+            "PHILIPPINES": "2022-07-15"
+          },
+          "EB-3": {
+            "ROW": "2021-12-01",
+            "CHINA": "2020-01-22",
+            "INDIA": "2012-05-01",
+            "MEXICO": "2021-12-01",
+            "PHILIPPINES": "2021-12-01"
+          },
+          "EB-4": {
+            "ROW": "2019-01-01",
+            "CHINA": "2019-01-01",
+            "INDIA": "2019-01-01",
+            "MEXICO": "2019-01-01",
+            "PHILIPPINES": "2019-01-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2015-10-01",
+            "INDIA": "2018-12-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-08-01",
+            "INDIA": "2019-07-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-01-01",
+            "CHINA": "2020-01-01",
+            "INDIA": "2012-05-15",
+            "MEXICO": "2023-01-01",
+            "PHILIPPINES": "2023-01-01"
+          },
+          "EB-3": {
+            "ROW": "2023-02-01",
+            "CHINA": "2020-09-01",
+            "INDIA": "2012-08-01",
+            "MEXICO": "2023-02-01",
+            "PHILIPPINES": "2023-01-01"
+          },
+          "EB-4": {
+            "ROW": "2019-03-01",
+            "CHINA": "2019-03-01",
+            "INDIA": "2019-03-01",
+            "MEXICO": "2019-03-01",
+            "PHILIPPINES": "2019-03-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2017-01-01",
+            "INDIA": "2022-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2024-01",
+      "year": 2024,
+      "month": 1,
+      "published": "2024-01-01",
+      "title": "Visa Bulletin For January 2024",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2024/visa-bulletin-for-january-2024.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-07-01",
+            "INDIA": "2020-09-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2022-11-01",
+            "CHINA": "2020-01-01",
+            "INDIA": "2012-03-01",
+            "MEXICO": "2022-11-01",
+            "PHILIPPINES": "2022-11-01"
+          },
+          "EB-3": {
+            "ROW": "2022-08-01",
+            "CHINA": "2020-09-01",
+            "INDIA": "2012-06-01",
+            "MEXICO": "2022-08-01",
+            "PHILIPPINES": "2022-08-01"
+          },
+          "EB-4": {
+            "ROW": "2019-05-15",
+            "CHINA": "2019-05-15",
+            "INDIA": "2019-05-15",
+            "MEXICO": "2019-05-15",
+            "PHILIPPINES": "2019-05-15"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2015-12-08",
+            "INDIA": "2020-12-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-01-01",
+            "INDIA": "2021-01-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-02-15",
+            "CHINA": "2020-06-01",
+            "INDIA": "2012-05-15",
+            "MEXICO": "2023-02-15",
+            "PHILIPPINES": "2023-02-15"
+          },
+          "EB-3": {
+            "ROW": "2023-02-01",
+            "CHINA": "2021-07-01",
+            "INDIA": "2012-08-01",
+            "MEXICO": "2023-02-01",
+            "PHILIPPINES": "2023-01-01"
+          },
+          "EB-4": {
+            "ROW": "2019-09-01",
+            "CHINA": "2019-09-01",
+            "INDIA": "2019-09-01",
+            "MEXICO": "2019-09-01",
+            "PHILIPPINES": "2019-09-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2017-01-01",
+            "INDIA": "2022-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2024-02",
+      "year": 2024,
+      "month": 2,
+      "published": "2024-02-01",
+      "title": "Visa Bulletin For February 2024",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2024/visa-bulletin-for-february-2024.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-07-01",
+            "INDIA": "2020-09-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2022-11-15",
+            "CHINA": "2020-01-01",
+            "INDIA": "2012-03-01",
+            "MEXICO": "2022-11-15",
+            "PHILIPPINES": "2022-11-15"
+          },
+          "EB-3": {
+            "ROW": "2022-09-01",
+            "CHINA": "2020-09-01",
+            "INDIA": "2012-07-01",
+            "MEXICO": "2022-09-01",
+            "PHILIPPINES": "2022-09-01"
+          },
+          "EB-4": {
+            "ROW": "2019-05-15",
+            "CHINA": "2019-05-15",
+            "INDIA": "2019-05-15",
+            "MEXICO": "2019-05-15",
+            "PHILIPPINES": "2019-05-15"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2015-12-15",
+            "INDIA": "2020-12-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-01-01",
+            "INDIA": "2021-01-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-02-15",
+            "CHINA": "2020-06-01",
+            "INDIA": "2012-05-15",
+            "MEXICO": "2023-02-15",
+            "PHILIPPINES": "2023-02-15"
+          },
+          "EB-3": {
+            "ROW": "2023-02-01",
+            "CHINA": "2021-07-01",
+            "INDIA": "2012-08-01",
+            "MEXICO": "2023-02-01",
+            "PHILIPPINES": "2023-01-01"
+          },
+          "EB-4": {
+            "ROW": "2019-09-01",
+            "CHINA": "2019-09-01",
+            "INDIA": "2019-09-01",
+            "MEXICO": "2019-09-01",
+            "PHILIPPINES": "2019-09-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2017-01-01",
+            "INDIA": "2022-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2024-03",
+      "year": 2024,
+      "month": 3,
+      "published": "2024-03-01",
+      "title": "Visa Bulletin For March 2024",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2024/visa-bulletin-for-march-2024.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-07-15",
+            "INDIA": "2020-10-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2022-11-22",
+            "CHINA": "2020-01-01",
+            "INDIA": "2012-03-01",
+            "MEXICO": "2022-11-22",
+            "PHILIPPINES": "2022-11-22"
+          },
+          "EB-3": {
+            "ROW": "2022-09-08",
+            "CHINA": "2020-09-01",
+            "INDIA": "2012-07-01",
+            "MEXICO": "2022-09-08",
+            "PHILIPPINES": "2022-09-08"
+          },
+          "EB-4": {
+            "ROW": "2019-12-01",
+            "CHINA": "2019-12-01",
+            "INDIA": "2019-12-01",
+            "MEXICO": "2019-12-01",
+            "PHILIPPINES": "2019-12-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2015-12-15",
+            "INDIA": "2020-12-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-01-01",
+            "INDIA": "2021-01-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-02-15",
+            "CHINA": "2020-06-01",
+            "INDIA": "2012-05-15",
+            "MEXICO": "2023-02-15",
+            "PHILIPPINES": "2023-02-15"
+          },
+          "EB-3": {
+            "ROW": "2023-02-01",
+            "CHINA": "2021-07-01",
+            "INDIA": "2012-08-01",
+            "MEXICO": "2023-02-01",
+            "PHILIPPINES": "2023-01-01"
+          },
+          "EB-4": {
+            "ROW": "2020-01-01",
+            "CHINA": "2020-01-01",
+            "INDIA": "2020-01-01",
+            "MEXICO": "2020-01-01",
+            "PHILIPPINES": "2020-01-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2017-01-01",
+            "INDIA": "2022-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2024-04",
+      "year": 2024,
+      "month": 4,
+      "published": "2024-04-01",
+      "title": "Visa Bulletin For April 2024",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2024/visa-bulletin-for-april-2024.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-09-01",
+            "INDIA": "2021-03-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-01-15",
+            "CHINA": "2020-02-01",
+            "INDIA": "2012-04-15",
+            "MEXICO": "2023-01-15",
+            "PHILIPPINES": "2023-01-15"
+          },
+          "EB-3": {
+            "ROW": "2022-11-22",
+            "CHINA": "2020-09-01",
+            "INDIA": "2012-08-15",
+            "MEXICO": "2022-11-22",
+            "PHILIPPINES": "2022-11-22"
+          },
+          "EB-4": {
+            "ROW": "2020-11-01",
+            "CHINA": "2020-11-01",
+            "INDIA": "2020-11-01",
+            "MEXICO": "2020-11-01",
+            "PHILIPPINES": "2020-11-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2015-12-15",
+            "INDIA": "2020-12-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-01-01",
+            "INDIA": "2021-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-02-15",
+            "CHINA": "2020-06-01",
+            "INDIA": "2012-05-15",
+            "MEXICO": "2023-02-15",
+            "PHILIPPINES": "2023-02-15"
+          },
+          "EB-3": {
+            "ROW": "2023-02-01",
+            "CHINA": "2021-07-01",
+            "INDIA": "2012-09-15",
+            "MEXICO": "2023-02-01",
+            "PHILIPPINES": "2023-01-01"
+          },
+          "EB-4": {
+            "ROW": "2020-12-01",
+            "CHINA": "2020-12-01",
+            "INDIA": "2020-12-01",
+            "MEXICO": "2020-12-01",
+            "PHILIPPINES": "2020-12-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2017-01-01",
+            "INDIA": "2022-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2024-05",
+      "year": 2024,
+      "month": 5,
+      "published": "2024-05-01",
+      "title": "Visa Bulletin For May 2024",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2024/visa-bulletin-for-may-2024.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-09-01",
+            "INDIA": "2021-03-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-01-15",
+            "CHINA": "2020-02-01",
+            "INDIA": "2012-04-15",
+            "MEXICO": "2023-01-15",
+            "PHILIPPINES": "2023-01-15"
+          },
+          "EB-3": {
+            "ROW": "2022-11-22",
+            "CHINA": "2020-09-01",
+            "INDIA": "2012-08-15",
+            "MEXICO": "2022-11-22",
+            "PHILIPPINES": "2022-11-22"
+          },
+          "EB-4": {
+            "ROW": "2020-11-01",
+            "CHINA": "2020-11-01",
+            "INDIA": "2020-11-01",
+            "MEXICO": "2020-11-01",
+            "PHILIPPINES": "2020-11-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2015-12-15",
+            "INDIA": "2020-12-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-01-01",
+            "INDIA": "2021-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-02-15",
+            "CHINA": "2020-06-01",
+            "INDIA": "2012-05-15",
+            "MEXICO": "2023-02-15",
+            "PHILIPPINES": "2023-02-15"
+          },
+          "EB-3": {
+            "ROW": "2023-02-01",
+            "CHINA": "2021-07-01",
+            "INDIA": "2012-09-15",
+            "MEXICO": "2023-02-01",
+            "PHILIPPINES": "2023-01-01"
+          },
+          "EB-4": {
+            "ROW": "2020-12-01",
+            "CHINA": "2020-12-01",
+            "INDIA": "2020-12-01",
+            "MEXICO": "2020-12-01",
+            "PHILIPPINES": "2020-12-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2017-01-01",
+            "INDIA": "2022-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2024-06",
+      "year": 2024,
+      "month": 6,
+      "published": "2024-06-01",
+      "title": "Visa Bulletin For June 2024",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2024/visa-bulletin-for-june-2024.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-09-01",
+            "INDIA": "2021-03-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-01-15",
+            "CHINA": "2020-02-01",
+            "INDIA": "2012-04-15",
+            "MEXICO": "2023-01-15",
+            "PHILIPPINES": "2023-01-15"
+          },
+          "EB-3": {
+            "ROW": "2022-11-22",
+            "CHINA": "2020-09-01",
+            "INDIA": "2012-08-22",
+            "MEXICO": "2022-11-22",
+            "PHILIPPINES": "2022-11-22"
+          },
+          "EB-4": {
+            "ROW": "2020-11-01",
+            "CHINA": "2020-11-01",
+            "INDIA": "2020-11-01",
+            "MEXICO": "2020-11-01",
+            "PHILIPPINES": "2020-11-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2015-12-15",
+            "INDIA": "2020-12-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-01-01",
+            "INDIA": "2021-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-02-15",
+            "CHINA": "2020-06-01",
+            "INDIA": "2012-05-15",
+            "MEXICO": "2023-02-15",
+            "PHILIPPINES": "2023-02-15"
+          },
+          "EB-3": {
+            "ROW": "2023-02-01",
+            "CHINA": "2021-07-01",
+            "INDIA": "2012-09-15",
+            "MEXICO": "2023-02-01",
+            "PHILIPPINES": "2023-01-01"
+          },
+          "EB-4": {
+            "ROW": "2020-12-01",
+            "CHINA": "2020-12-01",
+            "INDIA": "2020-12-01",
+            "MEXICO": "2020-12-01",
+            "PHILIPPINES": "2020-12-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2017-01-01",
+            "INDIA": "2022-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2024-07",
+      "year": 2024,
+      "month": 7,
+      "published": "2024-07-01",
+      "title": "Visa Bulletin For July 2024",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2024/visa-bulletin-for-july-2024.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-11-01",
+            "INDIA": "2022-02-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-03-15",
+            "CHINA": "2020-03-01",
+            "INDIA": "2012-06-15",
+            "MEXICO": "2023-03-15",
+            "PHILIPPINES": "2023-03-15"
+          },
+          "EB-3": {
+            "ROW": "2021-12-01",
+            "CHINA": "2020-09-01",
+            "INDIA": "2012-09-22",
+            "MEXICO": "2021-12-01",
+            "PHILIPPINES": "2021-12-01"
+          },
+          "EB-4": {
+            "ROW": "2021-01-01",
+            "CHINA": "2021-01-01",
+            "INDIA": "2021-01-01",
+            "MEXICO": "2021-01-01",
+            "PHILIPPINES": "2021-01-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2015-12-15",
+            "INDIA": "2020-12-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-01-01",
+            "INDIA": "2022-02-08",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-03-22",
+            "CHINA": "2020-06-01",
+            "INDIA": "2012-06-22",
+            "MEXICO": "2023-03-22",
+            "PHILIPPINES": "2023-03-22"
+          },
+          "EB-3": {
+            "ROW": "2023-02-01",
+            "CHINA": "2021-07-01",
+            "INDIA": "2012-10-01",
+            "MEXICO": "2023-02-01",
+            "PHILIPPINES": "2023-01-01"
+          },
+          "EB-4": {
+            "ROW": "2021-02-01",
+            "CHINA": "2021-02-01",
+            "INDIA": "2021-02-01",
+            "MEXICO": "2021-02-01",
+            "PHILIPPINES": "2021-02-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2017-01-01",
+            "INDIA": "2022-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2024-08",
+      "year": 2024,
+      "month": 8,
+      "published": "2024-08-01",
+      "title": "Visa Bulletin For August 2024",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2024/visa-bulletin-for-august-2024.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-11-01",
+            "INDIA": "2022-02-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-03-15",
+            "CHINA": "2020-03-01",
+            "INDIA": "2012-07-15",
+            "MEXICO": "2023-03-15",
+            "PHILIPPINES": "2023-03-15"
+          },
+          "EB-3": {
+            "ROW": "2021-12-01",
+            "CHINA": "2020-09-01",
+            "INDIA": "2012-10-22",
+            "MEXICO": "2021-12-01",
+            "PHILIPPINES": "2021-12-01"
+          },
+          "EB-4": {
+            "ROW": "2021-01-01",
+            "CHINA": "2021-01-01",
+            "INDIA": "2021-01-01",
+            "MEXICO": "2021-01-01",
+            "PHILIPPINES": "2021-01-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2015-12-15",
+            "INDIA": "2020-12-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-01-01",
+            "INDIA": "2022-02-08",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-03-22",
+            "CHINA": "2020-06-01",
+            "INDIA": "2012-07-22",
+            "MEXICO": "2023-03-22",
+            "PHILIPPINES": "2023-03-22"
+          },
+          "EB-3": {
+            "ROW": "2023-02-01",
+            "CHINA": "2021-07-01",
+            "INDIA": "2012-11-01",
+            "MEXICO": "2023-02-01",
+            "PHILIPPINES": "2023-01-01"
+          },
+          "EB-4": {
+            "ROW": "2021-02-01",
+            "CHINA": "2021-02-01",
+            "INDIA": "2021-02-01",
+            "MEXICO": "2021-02-01",
+            "PHILIPPINES": "2021-02-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2017-01-01",
+            "INDIA": "2022-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2024-09",
+      "year": 2024,
+      "month": 9,
+      "published": "2024-09-01",
+      "title": "Visa Bulletin For September 2024",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2024/visa-bulletin-for-september-2024.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-11-01",
+            "INDIA": "2022-02-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-03-15",
+            "CHINA": "2020-03-01",
+            "INDIA": "2012-07-15",
+            "MEXICO": "2023-03-15",
+            "PHILIPPINES": "2023-03-15"
+          },
+          "EB-3": {
+            "ROW": "2020-12-01",
+            "CHINA": "2020-09-01",
+            "INDIA": "2012-10-22",
+            "MEXICO": "2020-12-01",
+            "PHILIPPINES": "2020-12-01"
+          },
+          "EB-4": {
+            "ROW": "2021-01-01",
+            "CHINA": "2021-01-01",
+            "INDIA": "2021-01-01",
+            "MEXICO": "2021-01-01",
+            "PHILIPPINES": "2021-01-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2015-12-15",
+            "INDIA": "2020-12-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-01-01",
+            "INDIA": "2022-02-08",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-03-22",
+            "CHINA": "2020-06-01",
+            "INDIA": "2012-07-22",
+            "MEXICO": "2023-03-22",
+            "PHILIPPINES": "2023-03-22"
+          },
+          "EB-3": {
+            "ROW": "2023-02-01",
+            "CHINA": "2021-07-01",
+            "INDIA": "2012-11-01",
+            "MEXICO": "2023-02-01",
+            "PHILIPPINES": "2023-01-01"
+          },
+          "EB-4": {
+            "ROW": "2021-02-01",
+            "CHINA": "2021-02-01",
+            "INDIA": "2021-02-01",
+            "MEXICO": "2021-02-01",
+            "PHILIPPINES": "2021-02-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2017-01-01",
+            "INDIA": "2022-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2024-10",
+      "year": 2024,
+      "month": 10,
+      "published": "2024-10-01",
+      "title": "Visa Bulletin For October 2024",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2025/visa-bulletin-for-october-2024.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-11-08",
+            "INDIA": "2022-02-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-03-15",
+            "CHINA": "2020-03-22",
+            "INDIA": "2012-07-15",
+            "MEXICO": "2023-03-15",
+            "PHILIPPINES": "2023-03-15"
+          },
+          "EB-3": {
+            "ROW": "2022-11-15",
+            "CHINA": "2020-04-01",
+            "INDIA": "2012-11-01",
+            "MEXICO": "2022-11-15",
+            "PHILIPPINES": "2022-11-15"
+          },
+          "EB-4": {
+            "ROW": "2021-01-01",
+            "CHINA": "2021-01-01",
+            "INDIA": "2021-01-01",
+            "MEXICO": "2021-01-01",
+            "PHILIPPINES": "2021-01-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-07-15",
+            "INDIA": "2022-01-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-01-01",
+            "INDIA": "2022-04-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-08-01",
+            "CHINA": "2020-10-01",
+            "INDIA": "2013-01-01",
+            "MEXICO": "2023-08-01",
+            "PHILIPPINES": "2023-08-01"
+          },
+          "EB-3": {
+            "ROW": "2023-03-01",
+            "CHINA": "2020-11-15",
+            "INDIA": "2013-06-08",
+            "MEXICO": "2023-03-01",
+            "PHILIPPINES": "2023-03-01"
+          },
+          "EB-4": {
+            "ROW": "2021-02-01",
+            "CHINA": "2021-02-01",
+            "INDIA": "2021-02-01",
+            "MEXICO": "2021-02-01",
+            "PHILIPPINES": "2021-02-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-10-01",
+            "INDIA": "2022-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2024-11",
+      "year": 2024,
+      "month": 11,
+      "published": "2024-11-01",
+      "title": "Visa Bulletin For November 2024",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2025/visa-bulletin-for-november-2024.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-11-08",
+            "INDIA": "2022-02-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-03-15",
+            "CHINA": "2020-03-22",
+            "INDIA": "2012-07-15",
+            "MEXICO": "2023-03-15",
+            "PHILIPPINES": "2023-03-15"
+          },
+          "EB-3": {
+            "ROW": "2022-11-15",
+            "CHINA": "2020-04-01",
+            "INDIA": "2012-11-01",
+            "MEXICO": "2022-11-15",
+            "PHILIPPINES": "2022-11-15"
+          },
+          "EB-4": {
+            "ROW": "2021-01-01",
+            "CHINA": "2021-01-01",
+            "INDIA": "2021-01-01",
+            "MEXICO": "2021-01-01",
+            "PHILIPPINES": "2021-01-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-07-15",
+            "INDIA": "2022-01-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-01-01",
+            "INDIA": "2022-04-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-08-01",
+            "CHINA": "2020-10-01",
+            "INDIA": "2013-01-01",
+            "MEXICO": "2023-08-01",
+            "PHILIPPINES": "2023-08-01"
+          },
+          "EB-3": {
+            "ROW": "2023-03-01",
+            "CHINA": "2020-11-15",
+            "INDIA": "2013-06-08",
+            "MEXICO": "2023-03-01",
+            "PHILIPPINES": "2023-03-01"
+          },
+          "EB-4": {
+            "ROW": "2021-02-01",
+            "CHINA": "2021-02-01",
+            "INDIA": "2021-02-01",
+            "MEXICO": "2021-02-01",
+            "PHILIPPINES": "2021-02-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-10-01",
+            "INDIA": "2022-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2024-12",
+      "year": 2024,
+      "month": 12,
+      "published": "2024-12-01",
+      "title": "Visa Bulletin For December 2024",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2025/visa-bulletin-for-december-2024.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-11-08",
+            "INDIA": "2022-02-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-03-15",
+            "CHINA": "2020-03-22",
+            "INDIA": "2012-08-01",
+            "MEXICO": "2023-03-15",
+            "PHILIPPINES": "2023-03-15"
+          },
+          "EB-3": {
+            "ROW": "2022-11-15",
+            "CHINA": "2020-04-01",
+            "INDIA": "2012-11-08",
+            "MEXICO": "2022-11-15",
+            "PHILIPPINES": "2022-11-15"
+          },
+          "EB-4": {
+            "ROW": "2021-01-01",
+            "CHINA": "2021-01-01",
+            "INDIA": "2021-01-01",
+            "MEXICO": "2021-01-01",
+            "PHILIPPINES": "2021-01-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-07-15",
+            "INDIA": "2022-01-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-01-01",
+            "INDIA": "2022-04-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-08-01",
+            "CHINA": "2020-10-01",
+            "INDIA": "2013-01-01",
+            "MEXICO": "2023-08-01",
+            "PHILIPPINES": "2023-08-01"
+          },
+          "EB-3": {
+            "ROW": "2023-03-01",
+            "CHINA": "2020-11-15",
+            "INDIA": "2013-06-08",
+            "MEXICO": "2023-03-01",
+            "PHILIPPINES": "2023-03-01"
+          },
+          "EB-4": {
+            "ROW": "2021-02-01",
+            "CHINA": "2021-02-01",
+            "INDIA": "2021-02-01",
+            "MEXICO": "2021-02-01",
+            "PHILIPPINES": "2021-02-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-10-01",
+            "INDIA": "2022-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2025-01",
+      "year": 2025,
+      "month": 1,
+      "published": "2025-01-01",
+      "title": "Visa Bulletin For January 2025",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2025/visa-bulletin-for-january-2025.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-11-08",
+            "INDIA": "2022-02-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-04-01",
+            "CHINA": "2020-04-22",
+            "INDIA": "2012-10-01",
+            "MEXICO": "2023-04-01",
+            "PHILIPPINES": "2023-04-01"
+          },
+          "EB-3": {
+            "ROW": "2022-12-01",
+            "CHINA": "2020-06-01",
+            "INDIA": "2012-12-01",
+            "MEXICO": "2022-12-01",
+            "PHILIPPINES": "2022-12-01"
+          },
+          "EB-4": {
+            "ROW": "2021-01-01",
+            "CHINA": "2021-01-01",
+            "INDIA": "2021-01-01",
+            "MEXICO": "2021-01-01",
+            "PHILIPPINES": "2021-01-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-07-15",
+            "INDIA": "2022-01-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-01-01",
+            "INDIA": "2022-04-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-08-01",
+            "CHINA": "2020-10-01",
+            "INDIA": "2013-01-01",
+            "MEXICO": "2023-08-01",
+            "PHILIPPINES": "2023-08-01"
+          },
+          "EB-3": {
+            "ROW": "2023-03-01",
+            "CHINA": "2020-11-15",
+            "INDIA": "2013-06-08",
+            "MEXICO": "2023-03-01",
+            "PHILIPPINES": "2023-03-01"
+          },
+          "EB-4": {
+            "ROW": "2021-02-01",
+            "CHINA": "2021-02-01",
+            "INDIA": "2021-02-01",
+            "MEXICO": "2021-02-01",
+            "PHILIPPINES": "2021-02-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-10-01",
+            "INDIA": "2022-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2025-02",
+      "year": 2025,
+      "month": 2,
+      "published": "2025-02-01",
+      "title": "Visa Bulletin For February 2025",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2025/visa-bulletin-for-february-2025.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-11-08",
+            "INDIA": "2022-02-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-04-01",
+            "CHINA": "2020-04-22",
+            "INDIA": "2012-10-15",
+            "MEXICO": "2023-04-01",
+            "PHILIPPINES": "2023-04-01"
+          },
+          "EB-3": {
+            "ROW": "2022-12-01",
+            "CHINA": "2020-07-01",
+            "INDIA": "2012-12-15",
+            "MEXICO": "2022-12-01",
+            "PHILIPPINES": "2022-12-01"
+          },
+          "EB-4": {
+            "ROW": "2021-01-01",
+            "CHINA": "2021-01-01",
+            "INDIA": "2021-01-01",
+            "MEXICO": "2021-01-01",
+            "PHILIPPINES": "2021-01-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-07-15",
+            "INDIA": "2022-01-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-01-01",
+            "INDIA": "2022-04-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-08-01",
+            "CHINA": "2020-10-01",
+            "INDIA": "2013-01-01",
+            "MEXICO": "2023-08-01",
+            "PHILIPPINES": "2023-08-01"
+          },
+          "EB-3": {
+            "ROW": "2023-03-01",
+            "CHINA": "2020-11-15",
+            "INDIA": "2013-06-08",
+            "MEXICO": "2023-03-01",
+            "PHILIPPINES": "2023-03-01"
+          },
+          "EB-4": {
+            "ROW": "2021-02-01",
+            "CHINA": "2021-02-01",
+            "INDIA": "2021-02-01",
+            "MEXICO": "2021-02-01",
+            "PHILIPPINES": "2021-02-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-10-01",
+            "INDIA": "2022-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2025-03",
+      "year": 2025,
+      "month": 3,
+      "published": "2025-03-01",
+      "title": "Visa Bulletin For March 2025",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2025/visa-bulletin-for-march-2025.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-11-08",
+            "INDIA": "2022-02-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-05-15",
+            "CHINA": "2020-05-08",
+            "INDIA": "2012-12-01",
+            "MEXICO": "2023-05-15",
+            "PHILIPPINES": "2023-05-15"
+          },
+          "EB-3": {
+            "ROW": "2022-12-01",
+            "CHINA": "2020-08-01",
+            "INDIA": "2013-02-01",
+            "MEXICO": "2022-12-01",
+            "PHILIPPINES": "2022-12-01"
+          },
+          "EB-4": {
+            "ROW": "2019-08-01",
+            "CHINA": "2019-08-01",
+            "INDIA": "2019-08-01",
+            "MEXICO": "2019-08-01",
+            "PHILIPPINES": "2019-08-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-07-15",
+            "INDIA": "2022-01-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-01-01",
+            "INDIA": "2022-04-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-08-01",
+            "CHINA": "2020-10-01",
+            "INDIA": "2013-01-01",
+            "MEXICO": "2023-08-01",
+            "PHILIPPINES": "2023-08-01"
+          },
+          "EB-3": {
+            "ROW": "2023-03-01",
+            "CHINA": "2020-11-15",
+            "INDIA": "2013-06-08",
+            "MEXICO": "2023-03-01",
+            "PHILIPPINES": "2023-03-01"
+          },
+          "EB-4": {
+            "ROW": "2021-02-01",
+            "CHINA": "2021-02-01",
+            "INDIA": "2021-02-01",
+            "MEXICO": "2021-02-01",
+            "PHILIPPINES": "2021-02-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-10-01",
+            "INDIA": "2022-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2025-04",
+      "year": 2025,
+      "month": 4,
+      "published": "2025-04-01",
+      "title": "Visa Bulletin For April 2025",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2025/visa-bulletin-for-april-2025.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-11-08",
+            "INDIA": "2022-02-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-06-22",
+            "CHINA": "2020-10-01",
+            "INDIA": "2013-01-01",
+            "MEXICO": "2023-06-22",
+            "PHILIPPINES": "2023-06-22"
+          },
+          "EB-3": {
+            "ROW": "2023-01-01",
+            "CHINA": "2020-11-01",
+            "INDIA": "2013-04-01",
+            "MEXICO": "2023-01-01",
+            "PHILIPPINES": "2023-01-01"
+          },
+          "EB-4": {
+            "ROW": "U",
+            "CHINA": "U",
+            "INDIA": "U",
+            "MEXICO": "U",
+            "PHILIPPINES": "U"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2014-01-22",
+            "INDIA": "2019-11-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-01-01",
+            "INDIA": "2022-04-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-08-01",
+            "CHINA": "2020-11-01",
+            "INDIA": "2013-02-01",
+            "MEXICO": "2023-08-01",
+            "PHILIPPINES": "2023-08-01"
+          },
+          "EB-3": {
+            "ROW": "2023-03-01",
+            "CHINA": "2020-11-15",
+            "INDIA": "2013-06-08",
+            "MEXICO": "2023-03-01",
+            "PHILIPPINES": "2023-03-01"
+          },
+          "EB-4": {
+            "ROW": "2021-02-01",
+            "CHINA": "2021-02-01",
+            "INDIA": "2021-02-01",
+            "MEXICO": "2021-02-01",
+            "PHILIPPINES": "2021-02-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-10-01",
+            "INDIA": "2022-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2025-05",
+      "year": 2025,
+      "month": 5,
+      "published": "2025-05-01",
+      "title": "Visa Bulletin For May 2025",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2025/visa-bulletin-for-may-2025.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-11-08",
+            "INDIA": "2022-02-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-06-22",
+            "CHINA": "2020-10-01",
+            "INDIA": "2013-01-01",
+            "MEXICO": "2023-06-22",
+            "PHILIPPINES": "2023-06-22"
+          },
+          "EB-3": {
+            "ROW": "2023-01-01",
+            "CHINA": "2020-11-01",
+            "INDIA": "2013-04-15",
+            "MEXICO": "2023-01-01",
+            "PHILIPPINES": "2023-01-01"
+          },
+          "EB-4": {
+            "ROW": "U",
+            "CHINA": "U",
+            "INDIA": "U",
+            "MEXICO": "U",
+            "PHILIPPINES": "U"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2014-01-22",
+            "INDIA": "2019-05-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-01-01",
+            "INDIA": "2022-04-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-08-01",
+            "CHINA": "2020-11-01",
+            "INDIA": "2013-02-01",
+            "MEXICO": "2023-08-01",
+            "PHILIPPINES": "2023-08-01"
+          },
+          "EB-3": {
+            "ROW": "2023-03-01",
+            "CHINA": "2020-11-15",
+            "INDIA": "2013-06-08",
+            "MEXICO": "2023-03-01",
+            "PHILIPPINES": "2023-03-01"
+          },
+          "EB-4": {
+            "ROW": "2021-02-01",
+            "CHINA": "2021-02-01",
+            "INDIA": "2021-02-01",
+            "MEXICO": "2021-02-01",
+            "PHILIPPINES": "2021-02-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-10-01",
+            "INDIA": "2022-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2025-06",
+      "year": 2025,
+      "month": 6,
+      "published": "2025-06-01",
+      "title": "Visa Bulletin For June 2025",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2025/visa-bulletin-for-june-2025.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-11-08",
+            "INDIA": "2022-02-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-10-15",
+            "CHINA": "2020-12-01",
+            "INDIA": "2013-01-01",
+            "MEXICO": "2023-10-15",
+            "PHILIPPINES": "2023-10-15"
+          },
+          "EB-3": {
+            "ROW": "2023-02-08",
+            "CHINA": "2020-11-22",
+            "INDIA": "2013-04-15",
+            "MEXICO": "2023-02-08",
+            "PHILIPPINES": "2023-02-08"
+          },
+          "EB-4": {
+            "ROW": "U",
+            "CHINA": "U",
+            "INDIA": "U",
+            "MEXICO": "U",
+            "PHILIPPINES": "U"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2014-01-22",
+            "INDIA": "2019-05-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-01-01",
+            "INDIA": "2022-04-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-11-15",
+            "CHINA": "2021-01-01",
+            "INDIA": "2013-02-01",
+            "MEXICO": "2023-11-15",
+            "PHILIPPINES": "2023-11-15"
+          },
+          "EB-3": {
+            "ROW": "2023-03-01",
+            "CHINA": "2020-12-22",
+            "INDIA": "2013-06-08",
+            "MEXICO": "2023-03-01",
+            "PHILIPPINES": "2023-03-01"
+          },
+          "EB-4": {
+            "ROW": "2021-02-01",
+            "CHINA": "2021-02-01",
+            "INDIA": "2021-02-01",
+            "MEXICO": "2021-02-01",
+            "PHILIPPINES": "2021-02-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-10-01",
+            "INDIA": "2022-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2025-07",
+      "year": 2025,
+      "month": 7,
+      "published": "2025-07-01",
+      "title": "Visa Bulletin For July 2025",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2025/visa-bulletin-for-july-2025.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-11-15",
+            "INDIA": "2022-02-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-10-15",
+            "CHINA": "2020-12-15",
+            "INDIA": "2013-01-01",
+            "MEXICO": "2023-10-15",
+            "PHILIPPINES": "2023-10-15"
+          },
+          "EB-3": {
+            "ROW": "2023-04-01",
+            "CHINA": "2020-12-01",
+            "INDIA": "2013-04-22",
+            "MEXICO": "2023-04-01",
+            "PHILIPPINES": "2023-02-08"
+          },
+          "EB-4": {
+            "ROW": "U",
+            "CHINA": "U",
+            "INDIA": "U",
+            "MEXICO": "U",
+            "PHILIPPINES": "U"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2014-01-22",
+            "INDIA": "2019-05-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-01-01",
+            "INDIA": "2022-04-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-11-15",
+            "CHINA": "2021-01-01",
+            "INDIA": "2013-02-01",
+            "MEXICO": "2023-11-15",
+            "PHILIPPINES": "2023-11-15"
+          },
+          "EB-3": {
+            "ROW": "2023-05-01",
+            "CHINA": "2020-12-22",
+            "INDIA": "2013-06-08",
+            "MEXICO": "2023-05-01",
+            "PHILIPPINES": "2023-05-01"
+          },
+          "EB-4": {
+            "ROW": "2021-02-01",
+            "CHINA": "2021-02-01",
+            "INDIA": "2021-02-01",
+            "MEXICO": "2021-02-01",
+            "PHILIPPINES": "2021-02-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-10-01",
+            "INDIA": "2022-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2025-08",
+      "year": 2025,
+      "month": 8,
+      "published": "2025-08-01",
+      "title": "Visa Bulletin For August 2025",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2025/visa-bulletin-for-august-2025.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-11-15",
+            "INDIA": "2022-02-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-09-01",
+            "CHINA": "2020-12-15",
+            "INDIA": "2013-01-01",
+            "MEXICO": "2023-09-01",
+            "PHILIPPINES": "2023-09-01"
+          },
+          "EB-3": {
+            "ROW": "2023-04-01",
+            "CHINA": "2020-12-01",
+            "INDIA": "2013-05-22",
+            "MEXICO": "2023-04-01",
+            "PHILIPPINES": "2023-02-08"
+          },
+          "EB-4": {
+            "ROW": "U",
+            "CHINA": "U",
+            "INDIA": "U",
+            "MEXICO": "U",
+            "PHILIPPINES": "U"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2015-12-08",
+            "INDIA": "2019-11-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-01-01",
+            "INDIA": "2022-04-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-11-15",
+            "CHINA": "2021-01-01",
+            "INDIA": "2013-02-01",
+            "MEXICO": "2023-11-15",
+            "PHILIPPINES": "2023-11-15"
+          },
+          "EB-3": {
+            "ROW": "2023-05-01",
+            "CHINA": "2020-12-22",
+            "INDIA": "2013-06-08",
+            "MEXICO": "2023-05-01",
+            "PHILIPPINES": "2023-05-01"
+          },
+          "EB-4": {
+            "ROW": "2021-02-01",
+            "CHINA": "2021-02-01",
+            "INDIA": "2021-02-01",
+            "MEXICO": "2021-02-01",
+            "PHILIPPINES": "2021-02-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-10-01",
+            "INDIA": "2022-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2025-09",
+      "year": 2025,
+      "month": 9,
+      "published": "2025-09-01",
+      "title": "Visa Bulletin For September 2025",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2025/visa-bulletin-for-september-2025.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-11-15",
+            "INDIA": "2022-02-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-09-01",
+            "CHINA": "2020-12-15",
+            "INDIA": "2013-01-01",
+            "MEXICO": "2023-09-01",
+            "PHILIPPINES": "2023-09-01"
+          },
+          "EB-3": {
+            "ROW": "2023-04-01",
+            "CHINA": "2020-12-01",
+            "INDIA": "2013-05-22",
+            "MEXICO": "2023-04-01",
+            "PHILIPPINES": "2023-02-08"
+          },
+          "EB-4": {
+            "ROW": "U",
+            "CHINA": "U",
+            "INDIA": "U",
+            "MEXICO": "U",
+            "PHILIPPINES": "U"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2015-12-08",
+            "INDIA": "2019-11-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-01-01",
+            "INDIA": "2022-04-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-11-15",
+            "CHINA": "2021-01-01",
+            "INDIA": "2013-02-01",
+            "MEXICO": "2023-11-15",
+            "PHILIPPINES": "2023-11-15"
+          },
+          "EB-3": {
+            "ROW": "2023-05-01",
+            "CHINA": "2020-12-22",
+            "INDIA": "2013-06-08",
+            "MEXICO": "2023-05-01",
+            "PHILIPPINES": "2023-05-01"
+          },
+          "EB-4": {
+            "ROW": "2021-02-01",
+            "CHINA": "2021-02-01",
+            "INDIA": "2021-02-01",
+            "MEXICO": "2021-02-01",
+            "PHILIPPINES": "2021-02-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-10-01",
+            "INDIA": "2022-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2025-10",
+      "year": 2025,
+      "month": 10,
+      "published": "2025-10-01",
+      "title": "Visa Bulletin For October 2025",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-october-2025.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-12-22",
+            "INDIA": "2022-02-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-12-01",
+            "CHINA": "2021-04-01",
+            "INDIA": "2013-04-01",
+            "MEXICO": "2023-12-01",
+            "PHILIPPINES": "2023-12-01"
+          },
+          "EB-3": {
+            "ROW": "2023-04-01",
+            "CHINA": "2021-03-01",
+            "INDIA": "2013-08-22",
+            "MEXICO": "2023-04-01",
+            "PHILIPPINES": "2023-04-01"
+          },
+          "EB-4": {
+            "ROW": "2020-07-01",
+            "CHINA": "2020-07-01",
+            "INDIA": "2020-07-01",
+            "MEXICO": "2020-07-01",
+            "PHILIPPINES": "2020-07-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2015-12-08",
+            "INDIA": "2021-02-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-05-15",
+            "INDIA": "2023-04-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2024-07-15",
+            "CHINA": "2021-12-01",
+            "INDIA": "2013-12-01",
+            "MEXICO": "2024-07-15",
+            "PHILIPPINES": "2024-07-15"
+          },
+          "EB-3": {
+            "ROW": "2023-07-01",
+            "CHINA": "2022-01-01",
+            "INDIA": "2014-08-15",
+            "MEXICO": "2023-07-01",
+            "PHILIPPINES": "2023-07-01"
+          },
+          "EB-4": {
+            "ROW": "2021-02-15",
+            "CHINA": "2021-02-15",
+            "INDIA": "2021-02-15",
+            "MEXICO": "2021-02-15",
+            "PHILIPPINES": "2021-02-15"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-07-01",
+            "INDIA": "2022-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2025-11",
+      "year": 2025,
+      "month": 11,
+      "published": "2025-11-01",
+      "title": "Visa Bulletin For November 2025",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-november-2025.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2022-12-22",
+            "INDIA": "2022-02-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2023-12-01",
+            "CHINA": "2021-04-01",
+            "INDIA": "2013-04-01",
+            "MEXICO": "2023-12-01",
+            "PHILIPPINES": "2023-12-01"
+          },
+          "EB-3": {
+            "ROW": "2023-04-01",
+            "CHINA": "2021-03-01",
+            "INDIA": "2013-08-22",
+            "MEXICO": "2023-04-01",
+            "PHILIPPINES": "2023-04-01"
+          },
+          "EB-4": {
+            "ROW": "2020-07-01",
+            "CHINA": "2020-07-01",
+            "INDIA": "2020-07-01",
+            "MEXICO": "2020-07-01",
+            "PHILIPPINES": "2020-07-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2015-12-08",
+            "INDIA": "2021-02-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-05-15",
+            "INDIA": "2023-04-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2024-07-15",
+            "CHINA": "2021-12-01",
+            "INDIA": "2013-12-01",
+            "MEXICO": "2024-07-15",
+            "PHILIPPINES": "2024-07-15"
+          },
+          "EB-3": {
+            "ROW": "2023-07-01",
+            "CHINA": "2022-01-01",
+            "INDIA": "2014-08-15",
+            "MEXICO": "2023-07-01",
+            "PHILIPPINES": "2023-07-01"
+          },
+          "EB-4": {
+            "ROW": "2021-02-15",
+            "CHINA": "2021-02-15",
+            "INDIA": "2021-02-15",
+            "MEXICO": "2021-02-15",
+            "PHILIPPINES": "2021-02-15"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-07-01",
+            "INDIA": "2022-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2025-12",
+      "year": 2025,
+      "month": 12,
+      "published": "2025-12-01",
+      "title": "Visa Bulletin For December 2025",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-december-2025.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-01-22",
+            "INDIA": "2022-03-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2024-02-01",
+            "CHINA": "2021-06-01",
+            "INDIA": "2013-05-15",
+            "MEXICO": "2024-02-01",
+            "PHILIPPINES": "2024-02-01"
+          },
+          "EB-3": {
+            "ROW": "2023-04-15",
+            "CHINA": "2021-04-01",
+            "INDIA": "2013-09-22",
+            "MEXICO": "2023-04-15",
+            "PHILIPPINES": "2023-04-15"
+          },
+          "EB-4": {
+            "ROW": "2020-09-01",
+            "CHINA": "2020-09-01",
+            "INDIA": "2020-09-01",
+            "MEXICO": "2020-09-01",
+            "PHILIPPINES": "2020-09-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-07-15",
+            "INDIA": "2021-07-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-05-15",
+            "INDIA": "2023-04-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2024-07-15",
+            "CHINA": "2021-12-01",
+            "INDIA": "2013-12-01",
+            "MEXICO": "2024-07-15",
+            "PHILIPPINES": "2024-07-15"
+          },
+          "EB-3": {
+            "ROW": "2023-07-01",
+            "CHINA": "2022-01-01",
+            "INDIA": "2014-08-15",
+            "MEXICO": "2023-07-01",
+            "PHILIPPINES": "2023-07-01"
+          },
+          "EB-4": {
+            "ROW": "2021-02-15",
+            "CHINA": "2021-02-15",
+            "INDIA": "2021-02-15",
+            "MEXICO": "2021-02-15",
+            "PHILIPPINES": "2021-02-15"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-07-22",
+            "INDIA": "2022-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2026-01",
+      "year": 2026,
+      "month": 1,
+      "published": "2026-01-01",
+      "title": "Visa Bulletin For January 2026",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-january-2026.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-02-01",
+            "INDIA": "2023-02-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2024-04-01",
+            "CHINA": "2021-09-01",
+            "INDIA": "2013-07-15",
+            "MEXICO": "2024-04-01",
+            "PHILIPPINES": "2024-04-01"
+          },
+          "EB-3": {
+            "ROW": "2023-04-22",
+            "CHINA": "2021-05-01",
+            "INDIA": "2013-11-15",
+            "MEXICO": "2023-04-22",
+            "PHILIPPINES": "2023-04-22"
+          },
+          "EB-4": {
+            "ROW": "2021-01-01",
+            "CHINA": "2021-01-01",
+            "INDIA": "2021-01-01",
+            "MEXICO": "2021-01-01",
+            "PHILIPPINES": "2021-01-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-08-15",
+            "INDIA": "2022-05-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-08-01",
+            "INDIA": "2023-08-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2024-10-15",
+            "CHINA": "2022-01-01",
+            "INDIA": "2013-12-01",
+            "MEXICO": "2024-10-15",
+            "PHILIPPINES": "2024-10-15"
+          },
+          "EB-3": {
+            "ROW": "2023-07-01",
+            "CHINA": "2022-01-01",
+            "INDIA": "2014-08-15",
+            "MEXICO": "2023-07-01",
+            "PHILIPPINES": "2023-07-01"
+          },
+          "EB-4": {
+            "ROW": "2021-03-15",
+            "CHINA": "2021-03-15",
+            "INDIA": "2021-03-15",
+            "MEXICO": "2021-03-15",
+            "PHILIPPINES": "2021-03-15"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-08-22",
+            "INDIA": "2024-05-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2026-02",
+      "year": 2026,
+      "month": 2,
+      "published": "2026-02-01",
+      "title": "Visa Bulletin For February 2026",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-february-2026.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-02-01",
+            "INDIA": "2023-02-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2024-04-01",
+            "CHINA": "2021-09-01",
+            "INDIA": "2013-07-15",
+            "MEXICO": "2024-04-01",
+            "PHILIPPINES": "2024-04-01"
+          },
+          "EB-3": {
+            "ROW": "2023-06-01",
+            "CHINA": "2021-05-01",
+            "INDIA": "2013-11-15",
+            "MEXICO": "2023-06-01",
+            "PHILIPPINES": "2023-06-01"
+          },
+          "EB-4": {
+            "ROW": "2021-01-01",
+            "CHINA": "2021-01-01",
+            "INDIA": "2021-01-01",
+            "MEXICO": "2021-01-01",
+            "PHILIPPINES": "2021-01-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-08-15",
+            "INDIA": "2022-05-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-08-01",
+            "INDIA": "2023-08-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2024-10-15",
+            "CHINA": "2022-01-01",
+            "INDIA": "2013-12-01",
+            "MEXICO": "2024-10-15",
+            "PHILIPPINES": "2024-10-15"
+          },
+          "EB-3": {
+            "ROW": "2023-10-01",
+            "CHINA": "2022-01-01",
+            "INDIA": "2014-08-15",
+            "MEXICO": "2023-10-01",
+            "PHILIPPINES": "2023-10-01"
+          },
+          "EB-4": {
+            "ROW": "2021-03-15",
+            "CHINA": "2021-03-15",
+            "INDIA": "2021-03-15",
+            "MEXICO": "2021-03-15",
+            "PHILIPPINES": "2021-03-15"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-08-22",
+            "INDIA": "2024-05-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2026-03",
+      "year": 2026,
+      "month": 3,
+      "published": "2026-03-01",
+      "title": "Visa Bulletin For March 2026",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-march-2026.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-03-01",
+            "INDIA": "2023-03-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": "2024-10-15",
+            "CHINA": "2021-09-01",
+            "INDIA": "2013-09-15",
+            "MEXICO": "2024-10-15",
+            "PHILIPPINES": "2024-10-15"
+          },
+          "EB-3": {
+            "ROW": "2023-10-01",
+            "CHINA": "2021-05-01",
+            "INDIA": "2013-11-15",
+            "MEXICO": "2023-10-01",
+            "PHILIPPINES": "2023-08-01"
+          },
+          "EB-4": {
+            "ROW": "2021-07-15",
+            "CHINA": "2021-07-15",
+            "INDIA": "2021-07-15",
+            "MEXICO": "2021-07-15",
+            "PHILIPPINES": "2021-07-15"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-08-15",
+            "INDIA": "2022-05-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-12-01",
+            "INDIA": "2023-12-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": null,
+            "CHINA": "2022-01-01",
+            "INDIA": "2014-11-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-3": {
+            "ROW": "2024-01-15",
+            "CHINA": "2022-01-01",
+            "INDIA": "2014-08-15",
+            "MEXICO": "2024-01-15",
+            "PHILIPPINES": "2024-01-01"
+          },
+          "EB-4": {
+            "ROW": "2023-01-01",
+            "CHINA": "2023-01-01",
+            "INDIA": "2023-01-01",
+            "MEXICO": "2023-01-01",
+            "PHILIPPINES": "2023-01-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-10-01",
+            "INDIA": "2024-05-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2026-04",
+      "year": 2026,
+      "month": 4,
+      "published": "2026-04-01",
+      "title": "Visa Bulletin For April 2026",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-april-2026.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-04-01",
+            "INDIA": "2023-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": null,
+            "CHINA": "2021-09-01",
+            "INDIA": "2014-07-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-3": {
+            "ROW": "2024-06-01",
+            "CHINA": "2021-06-15",
+            "INDIA": "2013-11-15",
+            "MEXICO": "2024-06-01",
+            "PHILIPPINES": "2023-08-01"
+          },
+          "EB-4": {
+            "ROW": "2022-07-15",
+            "CHINA": "2022-07-15",
+            "INDIA": "2022-07-15",
+            "MEXICO": "2022-07-15",
+            "PHILIPPINES": "2022-07-15"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-09-01",
+            "INDIA": "2022-05-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-12-01",
+            "INDIA": "2023-12-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": null,
+            "CHINA": "2022-01-01",
+            "INDIA": "2015-01-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-3": {
+            "ROW": null,
+            "CHINA": "2022-01-01",
+            "INDIA": "2015-01-15",
+            "MEXICO": null,
+            "PHILIPPINES": "2024-01-01"
+          },
+          "EB-4": {
+            "ROW": "2023-01-01",
+            "CHINA": "2023-01-01",
+            "INDIA": "2023-01-01",
+            "MEXICO": "2023-01-01",
+            "PHILIPPINES": "2023-01-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-10-01",
+            "INDIA": "2024-05-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2026-05",
+      "year": 2026,
+      "month": 5,
+      "published": "2026-05-01",
+      "title": "Visa Bulletin For May 2026",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-may-2026.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-04-01",
+            "INDIA": "2023-04-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": null,
+            "CHINA": "2021-09-01",
+            "INDIA": "2014-07-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-3": {
+            "ROW": "2024-06-01",
+            "CHINA": "2021-06-15",
+            "INDIA": "2013-11-15",
+            "MEXICO": "2024-06-01",
+            "PHILIPPINES": "2023-08-01"
+          },
+          "EB-4": {
+            "ROW": "2022-07-15",
+            "CHINA": "2022-07-15",
+            "INDIA": "2022-07-15",
+            "MEXICO": "2022-07-15",
+            "PHILIPPINES": "2022-07-15"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-09-22",
+            "INDIA": "2022-05-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-12-01",
+            "INDIA": "2023-12-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": null,
+            "CHINA": "2022-01-01",
+            "INDIA": "2015-01-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-3": {
+            "ROW": null,
+            "CHINA": "2022-01-01",
+            "INDIA": "2015-01-15",
+            "MEXICO": null,
+            "PHILIPPINES": "2024-01-01"
+          },
+          "EB-4": {
+            "ROW": "2023-01-01",
+            "CHINA": "2023-01-01",
+            "INDIA": "2023-01-01",
+            "MEXICO": "2023-01-01",
+            "PHILIPPINES": "2023-01-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2017-03-01",
+            "INDIA": "2024-05-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2026-06",
+      "year": 2026,
+      "month": 6,
+      "published": "2026-06-01",
+      "title": "Visa Bulletin For June 2026",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-june-2026.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-04-01",
+            "INDIA": "2022-12-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": null,
+            "CHINA": "2021-09-01",
+            "INDIA": "2013-09-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-3": {
+            "ROW": "2024-06-01",
+            "CHINA": "2021-08-01",
+            "INDIA": "2013-12-15",
+            "MEXICO": "2024-06-01",
+            "PHILIPPINES": "2023-08-01"
+          },
+          "EB-4": {
+            "ROW": "2022-07-15",
+            "CHINA": "2022-07-15",
+            "INDIA": "2022-07-15",
+            "MEXICO": "2022-07-15",
+            "PHILIPPINES": "2022-07-15"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-09-22",
+            "INDIA": "2022-05-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-12-01",
+            "INDIA": "2023-12-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": null,
+            "CHINA": "2022-01-01",
+            "INDIA": "2015-01-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-3": {
+            "ROW": null,
+            "CHINA": "2022-01-01",
+            "INDIA": "2015-01-15",
+            "MEXICO": null,
+            "PHILIPPINES": "2024-01-01"
+          },
+          "EB-4": {
+            "ROW": "2023-01-01",
+            "CHINA": "2023-01-01",
+            "INDIA": "2023-01-01",
+            "MEXICO": "2023-01-01",
+            "PHILIPPINES": "2023-01-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2017-03-01",
+            "INDIA": "2024-05-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2026-07",
+      "year": 2026,
+      "month": 7,
+      "published": "2026-07-01",
+      "title": "Visa Bulletin For July 2026",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-july-2026.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-06-01",
+            "INDIA": "2022-10-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": null,
+            "CHINA": "2021-09-01",
+            "INDIA": "U",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-3": {
+            "ROW": "2024-08-01",
+            "CHINA": "2021-12-22",
+            "INDIA": "2014-01-01",
+            "MEXICO": "2024-08-01",
+            "PHILIPPINES": "2023-08-01"
+          },
+          "EB-4": {
+            "ROW": "2022-09-15",
+            "CHINA": "2022-09-15",
+            "INDIA": "2022-09-15",
+            "MEXICO": "2022-09-15",
+            "PHILIPPINES": "2022-09-15"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-12-01",
+            "INDIA": "U",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-12-01",
+            "INDIA": "2023-12-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": null,
+            "CHINA": "2022-01-01",
+            "INDIA": "2015-01-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-3": {
+            "ROW": null,
+            "CHINA": "2022-01-01",
+            "INDIA": "2015-01-15",
+            "MEXICO": null,
+            "PHILIPPINES": "2024-01-01"
+          },
+          "EB-4": {
+            "ROW": "2023-01-01",
+            "CHINA": "2023-01-01",
+            "INDIA": "2023-01-01",
+            "MEXICO": "2023-01-01",
+            "PHILIPPINES": "2023-01-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2017-03-01",
+            "INDIA": "2024-05-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    },
+    {
+      "id": "2026-08",
+      "year": 2026,
+      "month": 8,
+      "published": "2026-08-01",
+      "title": "Visa Bulletin for 2026-08",
+      "sourceUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-august-2026.html",
+      "uscisAosChart": null,
+      "tables": {
+        "A": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-07-01",
+            "INDIA": "2022-10-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": null,
+            "CHINA": "2021-09-01",
+            "INDIA": "U",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-3": {
+            "ROW": "2024-09-01",
+            "CHINA": "2022-01-01",
+            "INDIA": "2014-01-01",
+            "MEXICO": "2024-09-01",
+            "PHILIPPINES": "2023-08-01"
+          },
+          "EB-4": {
+            "ROW": "2022-10-15",
+            "CHINA": "2022-10-15",
+            "INDIA": "2022-10-15",
+            "MEXICO": "2022-10-15",
+            "PHILIPPINES": "2022-10-15"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2016-12-01",
+            "INDIA": "U",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        },
+        "B": {
+          "EB-1": {
+            "ROW": null,
+            "CHINA": "2023-12-01",
+            "INDIA": "2023-12-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-2": {
+            "ROW": null,
+            "CHINA": "2022-01-01",
+            "INDIA": "2015-01-15",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          },
+          "EB-3": {
+            "ROW": null,
+            "CHINA": "2022-01-08",
+            "INDIA": "2015-01-15",
+            "MEXICO": null,
+            "PHILIPPINES": "2024-01-01"
+          },
+          "EB-4": {
+            "ROW": "2023-01-01",
+            "CHINA": "2023-01-01",
+            "INDIA": "2023-01-01",
+            "MEXICO": "2023-01-01",
+            "PHILIPPINES": "2023-01-01"
+          },
+          "EB-5": {
+            "ROW": null,
+            "CHINA": "2017-03-01",
+            "INDIA": "2024-05-01",
+            "MEXICO": null,
+            "PHILIPPINES": null
+          }
+        }
+      }
+    }
+  ]
+}

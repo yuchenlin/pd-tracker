@@ -59,6 +59,9 @@ const RANGE_OPTIONS: { key: RangeKey; label: string; months: number | null }[] =
   { key: "all", label: "All", months: null },
 ];
 
+/** Include PD in Y domain only when within ~12 months of visible A/B. */
+const PD_NEAR_MS = 12 * 30.4375 * 24 * 60 * 60 * 1000;
+
 export function ChartPanel({
   category,
   chargeability,
@@ -147,19 +150,41 @@ export function ChartPanel({
     return Date.UTC(y, m - 1, d);
   }, [pd]);
 
-  const yDomain = useMemo(() => {
+  const { yDomain, pdOutside } = useMemo(() => {
     const values: number[] = [];
     for (const row of chartData) {
       if (typeof row.A === "number") values.push(row.A);
       if (typeof row.B === "number") values.push(row.B);
     }
-    if (typeof pdMs === "number") values.push(pdMs);
-    if (values.length === 0) return ["auto", "auto"] as const;
-    const min = Math.min(...values);
-    const max = Math.max(...values);
+    if (values.length === 0) {
+      return {
+        yDomain: ["auto", "auto"] as ["auto", "auto"] | [number, number],
+        pdOutside: null as null | "above" | "below",
+      };
+    }
+    let min = Math.min(...values);
+    let max = Math.max(...values);
+    let pdOutside: null | "above" | "below" = null;
+
+    if (typeof pdMs === "number") {
+      if (pdMs >= min - PD_NEAR_MS && pdMs <= max + PD_NEAR_MS) {
+        min = Math.min(min, pdMs);
+        max = Math.max(max, pdMs);
+      } else if (pdMs > max) {
+        pdOutside = "above";
+      } else {
+        pdOutside = "below";
+      }
+    }
+
     const pad = Math.max((max - min) * 0.08, 45 * 24 * 60 * 60 * 1000);
-    return [min - pad, max + pad] as [number, number];
+    return {
+      yDomain: [min - pad, max + pad] as [number, number],
+      pdOutside,
+    };
   }, [chartData, pdMs]);
+
+  const showPdLine = pdMs != null && pdOutside === null;
 
   return (
     <section id="charts" className="scroll-mt-20">
@@ -221,15 +246,23 @@ export function ChartPanel({
 
       <div className="mt-5 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm sm:p-5">
         <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-          <p className="text-sm font-medium text-slate-800">
-            {CHARGEABILITY_LABELS[chargeability]} · {category}
-            {pdMs != null ? (
-              <span className="font-normal text-slate-500">
-                {" "}
-                · PD {formatIsoDate(pd)}
-              </span>
+          <div className="flex min-w-0 flex-col gap-1.5">
+            <p className="text-sm font-medium text-slate-800">
+              {CHARGEABILITY_LABELS[chargeability]} · {category}
+              {pdMs != null ? (
+                <span className="font-normal text-slate-500">
+                  {" "}
+                  · PD {formatIsoDate(pd)}
+                </span>
+              ) : null}
+            </p>
+            {pdOutside ? (
+              <p className="inline-flex w-fit items-center rounded-full border border-rose-200 bg-rose-50 px-2.5 py-0.5 text-xs font-medium text-rose-800">
+                PD is {pdOutside === "above" ? "above latest cutoff" : "below earliest cutoff"}{" "}
+                — scale fits Table A/B
+              </p>
             ) : null}
-          </p>
+          </div>
           <p className="text-xs text-slate-500">
             X: bulletin month · Y: cut-off date
           </p>
@@ -268,13 +301,13 @@ export function ChartPanel({
                   wrapperStyle={{ fontSize: 12, paddingTop: 8 }}
                   content={<ChartLegend />}
                 />
-                {pdMs != null ? (
+                {showPdLine ? (
                   <ReferenceLine
-                    y={pdMs}
+                    y={pdMs!}
                     stroke={PD_COLOR}
                     strokeWidth={1.75}
                     strokeDasharray="6 4"
-                    ifOverflow="extendDomain"
+                    ifOverflow="hidden"
                     label={{
                       value: "PD",
                       position: "insideTopRight",

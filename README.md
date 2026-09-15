@@ -103,7 +103,17 @@ Do not collapse USCIS chart selection into the historical A/B series.
 
 ## Monthly updates (GitHub Action)
 
-Workflow: [`.github/workflows/update-visa-bulletin.yml`](.github/workflows/update-visa-bulletin.yml)
+Workflow template: [`docs/github-workflows/update-visa-bulletin.yml`](docs/github-workflows/update-visa-bulletin.yml)
+
+To enable automated PRs, copy it into `.github/workflows/` (requires a token/`gh` auth with the `workflow` scope the first time):
+
+```bash
+mkdir -p .github/workflows
+cp docs/github-workflows/update-visa-bulletin.yml .github/workflows/
+git add .github/workflows/update-visa-bulletin.yml
+git commit -m "ci: add monthly Visa Bulletin scrape workflow"
+git push
+```
 
 1. Cron runs several mid-month days (`11,13,15,17,19` at 15:00 UTC) and on `workflow_dispatch`.
 2. [`scripts/scrape-visa-bulletin.mjs`](scripts/scrape-visa-bulletin.mjs) fetches the target bulletin HTML from travel.state.gov (falls back to the Internet Archive CDX API when Cloudflare blocks live fetch).

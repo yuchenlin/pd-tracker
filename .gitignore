@@ -42,3 +42,6 @@ next-env.d.ts
 
 # scraper CI artifact
 scrape-result.json
+
+# Commit via docs/github-workflows until gh token has workflow scope
+.github/workflows/

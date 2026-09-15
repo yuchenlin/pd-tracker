@@ -1,0 +1,78 @@
+name: Update Visa Bulletin
+
+on:
+  schedule:
+    # DOS usually posts mid-month; check several days after the 10th.
+    - cron: "0 15 11,13,15,17,19 * *"
+  workflow_dispatch:
+    inputs:
+      bulletin_id:
+        description: "Bulletin id to fetch (YYYY-MM). Leave empty to auto-detect."
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Scrape & merge bulletin JSON
+        id: scrape
+        run: |
+          set -euo pipefail
+          ARGS=()
+          if [ -n "${{ github.event.inputs.bulletin_id }}" ]; then
+            ARGS+=(--id "${{ github.event.inputs.bulletin_id }}")
+          fi
+          if node scripts/scrape-visa-bulletin.mjs "${ARGS[@]+"${ARGS[@]}"}"; then
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+            echo "Scrape/parse failed — no PR will be opened."
+            exit 0
+          fi
+
+      - name: Detect changes
+        id: diff
+        if: steps.scrape.outputs.ok == 'true'
+        run: |
+          if git diff --quiet -- src/data/visa-bulletins.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No JSON changes."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            ID=$(python3 -c 'import json;print(json.load(open("scrape-result.json"))["id"])')
+            echo "id=$ID" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create Pull Request
+        if: steps.diff.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "data: add/update Visa Bulletin ${{ steps.diff.outputs.id }}"
+          title: "data: Visa Bulletin ${{ steps.diff.outputs.id }}"
+          body: |
+            Automated monthly ingest of the Department of State Visa Bulletin.
+
+            - Parsed employment **Table A** (Final Action) and **Table B** (Dates for Filing)
+            - Optionally recorded USCIS AOS “which chart to use” as `uscisAosChart` (separate from historical A/B series)
+            - Source: travel.state.gov (live or Internet Archive fallback)
+
+            Please skim the diff against the [official bulletin](https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html) before merging.
+
+            *Unofficial · not legal advice · not affiliated with DOS/USCIS.*
+          branch: data/visa-bulletin-${{ steps.diff.outputs.id }}
+          delete-branch: true
+          add-paths: |
+            src/data/visa-bulletins.json

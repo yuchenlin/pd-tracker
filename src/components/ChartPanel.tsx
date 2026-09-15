@@ -36,10 +36,6 @@ interface SeriesResponse {
 type ChartRow = {
   id: string;
   title: string;
-  year: number;
-  month: number;
-  /** Bulletin month-end ms — calendar / “y = x” diagonal. */
-  natural: number;
   A: number | null;
   B: number | null;
   A_label: string | null;
@@ -53,8 +49,6 @@ const PD_COLOR = "#e11d48";
 const TABLE_A_NAME = "Table A (Final Action)";
 const TABLE_B_NAME = "Table B (Dates for Filing)";
 const PD_NAME = "Priority Date";
-const NATURAL_NAME = "Natural time";
-const NATURAL_COLOR = "#94a3b8";
 
 type RangeKey = "all" | "2y" | "1y" | "6m";
 
@@ -116,9 +110,6 @@ export function ChartPanel({
           ({
             id: p.id,
             title: p.title,
-            year: p.year,
-            month: p.month,
-            natural: Date.UTC(p.year, p.month, 0),
             A: null,
             B: null,
             A_label: null,
@@ -161,7 +152,6 @@ export function ChartPanel({
     for (const row of chartData) {
       if (typeof row.A === "number") values.push(row.A);
       if (typeof row.B === "number") values.push(row.B);
-      values.push(row.natural);
     }
     if (typeof pdMs === "number") values.push(pdMs);
     if (values.length === 0) return ["auto", "auto"] as const;
@@ -179,10 +169,8 @@ export function ChartPanel({
         </h2>
         <p className="mt-1 text-sm text-slate-600">
           Table A (Final Action) and Table B (Dates for Filing) on one chart.
-          The dashed gray diagonal is natural / calendar time (bulletin month
-          end on both axes). Current (C) plots at the bulletin month end;
-          Unavailable (U) leaves a gap. Your priority date is the horizontal
-          reference line.
+          Current (C) plots at the bulletin month end; Unavailable (U) leaves a
+          gap. Your priority date is the horizontal reference line.
         </p>
       </div>
 
@@ -297,18 +285,6 @@ export function ChartPanel({
                   />
                 ) : null}
                 <Line
-                  type="linear"
-                  dataKey="natural"
-                  name={NATURAL_NAME}
-                  stroke={NATURAL_COLOR}
-                  strokeWidth={1.75}
-                  strokeDasharray="2 4"
-                  dot={false}
-                  connectNulls
-                  legendType="plainline"
-                  isAnimationActive={false}
-                />
-                <Line
                   type="monotone"
                   dataKey="A"
                   name={TABLE_A_NAME}
@@ -342,7 +318,6 @@ function ChartLegend() {
   const items = [
     { name: TABLE_A_NAME, color: TABLE_A_COLOR, dash: undefined as string | undefined },
     { name: TABLE_B_NAME, color: TABLE_B_COLOR, dash: "4 2" },
-    { name: NATURAL_NAME, color: NATURAL_COLOR, dash: "2 4" },
     { name: PD_NAME, color: PD_COLOR, dash: "6 4" },
   ];
   return (
@@ -492,18 +467,6 @@ function ChartTooltip({
             <span className="font-medium text-slate-900">{item.display}</span>
           </li>
         ))}
-        {row?.natural != null ? (
-          <li className="flex items-center gap-2 border-t border-slate-100 pt-1 mt-1">
-            <span
-              className="h-2 w-2 rounded-full"
-              style={{ backgroundColor: NATURAL_COLOR }}
-            />
-            <span className="text-slate-600">{NATURAL_NAME}</span>
-            <span className="font-medium text-slate-900">
-              {formatTickDate(row.natural)}
-            </span>
-          </li>
-        ) : null}
         {pdMs != null ? (
           <li className="flex items-center gap-2 border-t border-slate-100 pt-1 mt-1">
             <span

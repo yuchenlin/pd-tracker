@@ -36,10 +36,6 @@ interface SeriesResponse {
 type ChartRow = {
   id: string;
   title: string;
-  year: number;
-  month: number;
-  /** Bulletin month-end ms — calendar / “y = x” diagonal. */
-  natural: number;
   // Single-country keys
   A: number | null;
   B: number | null;
@@ -59,12 +55,10 @@ type ChartRow = {
 const TABLE_A_COLOR = "#0f766e";
 const TABLE_B_COLOR = "#2563eb";
 const PD_COLOR = "#e11d48";
-const NATURAL_COLOR = "#94a3b8";
 
 const TABLE_A_NAME = "Table A (Final Action)";
 const TABLE_B_NAME = "Table B (Dates for Filing)";
 const PD_NAME = "Your PD";
-const NATURAL_NAME = "Natural time";
 
 const COMPARE_COUNTRIES = ["CHINA", "INDIA"] as const;
 type CompareCountry = (typeof COMPARE_COUNTRIES)[number];
@@ -88,9 +82,6 @@ function emptyRow(p: SeriesPoint): ChartRow {
   return {
     id: p.id,
     title: p.title,
-    year: p.year,
-    month: p.month,
-    natural: Date.UTC(p.year, p.month, 0),
     A: null,
     B: null,
     A_label: null,
@@ -224,7 +215,6 @@ export function ChartPanel({
   const seriesValues = useMemo(() => {
     const values: number[] = [];
     for (const row of chartData) {
-      values.push(row.natural);
       if (compare) {
         for (const ch of COMPARE_COUNTRIES) {
           const a = row[`${ch}_A`];
@@ -311,11 +301,8 @@ export function ChartPanel({
         </h2>
         <p className="mt-1 text-sm text-slate-600">
           Table A (Final Action) and Table B (Dates for Filing) on one chart.
-          The dashed gray <strong className="font-medium text-slate-700">Natural time</strong>{" "}
-          diagonal is bulletin month-end on Y — steeper than that line means
-          cutoffs are catching up vs calendar; below it means the cutoff is
-          behind calendar time. Current (C) plots at the bulletin month end;
-          Unavailable (U) leaves a gap. Use{" "}
+          Current (C) plots at the bulletin month end; Unavailable (U) leaves a
+          gap. Your priority date is the solid crimson reference line. Use{" "}
           <strong className="font-medium text-slate-700">Compare China &amp; India</strong>{" "}
           to overlay both countries (A solid, B dashed in each country’s color).
         </p>
@@ -476,7 +463,7 @@ export function ChartPanel({
                     y={pdMs!}
                     stroke={PD_COLOR}
                     strokeWidth={2.5}
-                    ifOverflow="extendDomain"
+                    ifOverflow="hidden"
                     label={{
                       value: "Your PD",
                       position: "insideTopRight",
@@ -486,18 +473,6 @@ export function ChartPanel({
                     }}
                   />
                 ) : null}
-                <Line
-                  type="linear"
-                  dataKey="natural"
-                  name={NATURAL_NAME}
-                  stroke={NATURAL_COLOR}
-                  strokeWidth={1.75}
-                  strokeDasharray="2 4"
-                  dot={false}
-                  connectNulls
-                  legendType="plainline"
-                  isAnimationActive={false}
-                />
                 {compare ? (
                   <>
                     {(COMPARE_COUNTRIES as readonly CompareCountry[]).map(
@@ -578,9 +553,7 @@ function ChartLegend({
     color: string;
     dash?: string;
     width?: number;
-  }[] = [
-    { name: NATURAL_NAME, color: NATURAL_COLOR, dash: "2 4" },
-  ];
+  }[] = [];
 
   if (compare) {
     for (const ch of COMPARE_COUNTRIES) {
@@ -733,7 +706,6 @@ function ChartTooltip({
 
   for (const item of payload) {
     const key = String(item.dataKey ?? "");
-    if (key === "natural") continue;
 
     let display = "—";
     let name = String(item.name ?? key);
@@ -775,18 +747,6 @@ function ChartTooltip({
             <span className="font-medium text-slate-900">{item.display}</span>
           </li>
         ))}
-        {row?.natural != null ? (
-          <li className="flex items-center gap-2 border-t border-slate-100 pt-1 mt-1">
-            <span
-              className="h-2 w-2 rounded-full"
-              style={{ backgroundColor: NATURAL_COLOR }}
-            />
-            <span className="text-slate-600">{NATURAL_NAME}</span>
-            <span className="font-medium text-slate-900">
-              {formatTickDate(row.natural)}
-            </span>
-          </li>
-        ) : null}
         {pdMs != null ? (
           <li className="flex items-center gap-2 border-t border-slate-100 pt-1 mt-1">
             <span

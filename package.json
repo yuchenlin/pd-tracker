@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "generate-seed": "echo \"Seed is curated from DOS archives. Use: npm run scrape:bulletin\" && exit 0",
+    "backfill:bulletins": "node scripts/backfill-bulletins.mjs",
     "scrape:bulletin": "node scripts/scrape-visa-bulletin.mjs"
   },
   "dependencies": {

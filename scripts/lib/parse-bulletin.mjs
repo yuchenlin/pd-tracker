@@ -25,7 +25,10 @@ const ROW_TO_CAT = [
 
 export function bulletinUrl(year, month) {
   const name = MONTH_NAMES[month - 1];
-  return `https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/${year}/visa-bulletin-for-${name}-${year}.html`;
+  // DOS nests bulletins under the federal fiscal year folder (Oct → Sep).
+  // e.g. October 2023 lives under /visa-bulletin/2024/visa-bulletin-for-october-2023.html
+  const folderYear = month >= 10 ? year + 1 : year;
+  return `https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/${folderYear}/visa-bulletin-for-${name}-${year}.html`;
 }
 
 export function parseCutoffCell(raw) {
@@ -77,15 +80,56 @@ function extractTables(html) {
   return tables;
 }
 
+function mapChargeabilityHeaders(headerCells) {
+  /** Map chargeability keys to column indices from a header row. */
+  const map = {};
+  headerCells.forEach((raw, i) => {
+    if (i === 0) return;
+    const t = String(raw).replace(/\s+/g, " ").toUpperCase();
+    if (/ALL CHARGEABILITY|EXCEPT THOSE LISTED|WORLDWIDE|ALL AREAS/i.test(t) && !/CHINA|INDIA|MEXICO|PHILIPPINES|SALVADOR/i.test(t)) {
+      map.ROW = i;
+    } else if (/CHINA/.test(t)) {
+      map.CHINA = i;
+    } else if (/INDIA/.test(t)) {
+      map.INDIA = i;
+    } else if (/MEXICO/.test(t)) {
+      map.MEXICO = i;
+    } else if (/PHILIPPINES/.test(t)) {
+      map.PHILIPPINES = i;
+    }
+    // EL SALVADOR / GUATEMALA / HONDURAS column intentionally ignored
+  });
+  return map;
+}
+
+function defaultChargeabilityMap(cellCount) {
+  // Modern 6-column layout: cat + ROW/CHINA/INDIA/MEXICO/PHILIPPINES
+  if (cellCount >= 6) {
+    return { ROW: 1, CHINA: 2, INDIA: 3, MEXICO: 4, PHILIPPINES: 5 };
+  }
+  return { ROW: 1, CHINA: 2, INDIA: 3, MEXICO: 4, PHILIPPINES: 5 };
+}
+
 function parseEmploymentTable(tableHtml) {
   const out = emptyTable();
   const rows = [...tableHtml.matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi)].map((r) => r[1]);
+  let colMap = null;
   for (const rowHtml of rows) {
     const cells = [...rowHtml.matchAll(/<t[hd]\b[^>]*>([\s\S]*?)<\/t[hd]>/gi)].map((c) =>
       stripTags(c[1]),
     );
-    if (cells.length < 6) continue;
+    if (cells.length < 5) continue;
     const label = cells[0];
+
+    // Header row: establish column map (handles optional ESH column)
+    if (/employment/i.test(label) || /chargeability|china|india/i.test(cells.slice(1).join(" "))) {
+      const mapped = mapChargeabilityHeaders(cells);
+      if (mapped.ROW != null && mapped.CHINA != null && mapped.INDIA != null) {
+        colMap = mapped;
+      }
+      continue;
+    }
+
     let cat = null;
     for (const rule of ROW_TO_CAT) {
       if (rule.re.test(label)) {
@@ -94,33 +138,52 @@ function parseEmploymentTable(tableHtml) {
       }
     }
     if (!cat) continue;
-    // Skip "Other Workers" and EB-5 set-asides
+    // Skip "Other Workers" and EB-5 set-asides / religious workers
     if (/other\s*workers/i.test(label)) continue;
     if (/set\s*aside/i.test(label)) continue;
     if (/religious/i.test(label)) continue;
-    const vals = cells.slice(1, 6).map(parseCutoffCell);
+    // Prefer Non-Regional / Unreserved EB-5; skip Regional Center rows
+    if (/^5th/i.test(label) && /regional\s*center/i.test(label) && !/non[-\s]?regional/i.test(label)) {
+      continue;
+    }
+
+    const map = colMap ?? defaultChargeabilityMap(cells.length);
+    const pick = (key) => {
+      const idx = map[key];
+      if (idx == null || idx >= cells.length) return null;
+      return parseCutoffCell(cells[idx]);
+    };
     out[cat] = {
-      ROW: vals[0],
-      CHINA: vals[1],
-      INDIA: vals[2],
-      MEXICO: vals[3],
-      PHILIPPINES: vals[4],
+      ROW: pick("ROW"),
+      CHINA: pick("CHINA"),
+      INDIA: pick("INDIA"),
+      MEXICO: pick("MEXICO"),
+      PHILIPPINES: pick("PHILIPPINES"),
     };
   }
   return out;
 }
 
+function isEmploymentPrefTable(tableHtml) {
+  // Must look like EB preference chart: "1st" row + China/India headers
+  return /\b1st\b/i.test(tableHtml) && /CHINA/i.test(tableHtml) && /INDIA/i.test(tableHtml);
+}
+
 function findSectionTables(html) {
   const upper = html.toUpperCase();
-  const aIdx = upper.search(/FINAL ACTION DATES FOR EMPLOYMENT/);
-  const bIdx = upper.search(/DATES FOR FILING OF EMPLOYMENT/);
+  // Prefer specific EMPLOYMENT-BASED heading; avoid prose false positives.
+  let aIdx = upper.search(/FINAL ACTION DATES FOR EMPLOYMENT-BASED/);
+  if (aIdx < 0) aIdx = upper.search(/A\.\s*FINAL ACTION DATES FOR EMPLOYMENT/);
+  let bIdx = upper.search(/DATES FOR FILING OF EMPLOYMENT-BASED/);
+  if (bIdx < 0) bIdx = upper.search(/B\.\s*DATES FOR FILING OF EMPLOYMENT/);
   const tables = extractTables(html);
+  const empTables = tables.filter(isEmploymentPrefTable);
 
   function tableAfter(idx) {
     if (idx < 0) return null;
     let best = null;
     let bestPos = Infinity;
-    for (const t of tables) {
+    for (const t of empTables) {
       const pos = html.indexOf(t);
       if (pos > idx && pos < bestPos) {
         best = t;
@@ -130,15 +193,15 @@ function findSectionTables(html) {
     return best;
   }
 
-  // Prefer first employment table after each heading
   let aTable = tableAfter(aIdx);
   let bTable = tableAfter(bIdx);
 
-  // Fallback: first two employment-looking tables
-  if (!aTable || !bTable) {
-    const empTables = tables.filter((t) => /1st|2nd|CHINA|PHILIPPINES/i.test(t));
-    if (!aTable && empTables[0]) aTable = empTables[0];
-    if (!bTable && empTables[1]) bTable = empTables[1];
+  // Fallback: first two employment preference tables in document order (A then B)
+  if (!aTable || !bTable || aTable === bTable) {
+    if (empTables.length >= 2) {
+      aTable = empTables[0];
+      bTable = empTables[1];
+    }
   }
 
   return { aTable, bTable };

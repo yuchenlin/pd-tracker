@@ -31,7 +31,7 @@ Defaults: **EB-1**, **China (mainland)**, **PD 2024-07-16**, chart range **2 yea
 
 Seed file: [`src/data/visa-bulletins.json`](src/data/visa-bulletins.json)
 
-Historical months are curated from **official DOS Visa Bulletin** employment tables (U.S. government works; public domain). The MVP ships with **October 2023 → August 2026** (~3 years). Ongoing months are meant to be ingested by the scraper / GitHub Action — not hand-edited.
+Historical months are curated from **official DOS Visa Bulletin** employment tables (U.S. government works; public domain). Seed coverage is **September 2021 → August 2026** (60 monthly snapshots, ~5 years). Earlier months were backfilled from DOS HTML mirrors via `scripts/backfill-bulletins.mjs` (parser handles optional El Salvador/Guatemala/Honduras columns). Ongoing months are meant to be ingested by the scraper / GitHub Action — not hand-edited.
 
 ### Cut-off values
 
@@ -116,7 +116,7 @@ git push
 ```
 
 1. Cron runs several mid-month days (`11,13,15,17,19` at 15:00 UTC) and on `workflow_dispatch`.
-2. [`scripts/scrape-visa-bulletin.mjs`](scripts/scrape-visa-bulletin.mjs) fetches the target bulletin HTML from travel.state.gov (falls back to the Internet Archive CDX API when Cloudflare blocks live fetch).
+2. [`scripts/scrape-visa-bulletin.mjs`](scripts/scrape-visa-bulletin.mjs) fetches the target bulletin HTML from travel.state.gov (falls back to the Internet Archive CDX API when Cloudflare blocks live fetch). Bulletin URLs use the DOS **fiscal-year** folder (Oct–Sep). Historical bulk import: `node scripts/backfill-bulletins.mjs --from 2021-09 --to 2023-09`.
 3. [`scripts/lib/parse-bulletin.mjs`](scripts/lib/parse-bulletin.mjs) extracts employment **Table A** and **Table B**, encoding **C→null** and **U→`"U"`**.
 4. Optionally scrapes USCIS for that month’s AOS chart selection into `uscisAosChart` (does **not** overwrite historical A/B cells).
 5. If JSON changed and parse succeeded, opens a PR with the updated `src/data/visa-bulletins.json`.

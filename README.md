@@ -22,10 +22,10 @@ npm run scrape:bulletin   # fetch/parse latest bulletin into JSON (see below)
 ## What you get
 
 - **Charts** (`/`) — Recharts line chart of monthly cut-off dates with **Table A** (Final Action Dates) and **Table B** (Dates for Filing) as two series on the same plot, plus a horizontal **priority date** reference line. Filter by EB-1…EB-5 and China / India / Mexico / Philippines / ROW.
-- **PD Checker** (`/` and `/checker`) — Demo case pre-filled: **China, PD 2024-07-16** (not paywalled). Shows whether that PD is current for Table A and Table B.
+- **PD Checker** (`/` and `/checker`) — Demo case pre-filled: **EB-1, China (mainland), PD 2024-07-16** (not paywalled). Shows whether that PD is current for Table A and Table B.
 - **JSON API** — CORS-enabled (`Access-Control-Allow-Origin: *`) for a future iOS client.
 
-Defaults: **EB-2**, **China**, **PD 2024-07-16** (both Table A and Table B plotted).
+Defaults: **EB-1**, **China (mainland)**, **PD 2024-07-16** (both Table A and Table B plotted).
 
 ## Data schema
 

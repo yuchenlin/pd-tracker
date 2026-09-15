@@ -8,7 +8,7 @@ import { useState } from "react";
 const DEFAULT_PD = "2024-07-16";
 
 export function TrackerHome() {
-  const [category, setCategory] = useState<Category>("EB-2");
+  const [category, setCategory] = useState<Category>("EB-1");
   const [chargeability, setChargeability] = useState<Chargeability>("CHINA");
   const [pd, setPd] = useState(DEFAULT_PD);
 

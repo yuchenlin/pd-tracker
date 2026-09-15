@@ -52,7 +52,7 @@ export function PdChecker({
   onChargeabilityChange?: (c: Chargeability) => void;
   onPdChange?: (pd: string) => void;
 }) {
-  const [localCategory, setLocalCategory] = useState<Category>("EB-2");
+  const [localCategory, setLocalCategory] = useState<Category>("EB-1");
   const [localChargeability, setLocalChargeability] =
     useState<Chargeability>("CHINA");
   const [localPd, setLocalPd] = useState(DEFAULT_PD);
@@ -108,7 +108,7 @@ export function PdChecker({
         </h2>
         <p className="mt-1 text-sm text-slate-600">
           Demo case is pre-filled:{" "}
-          <strong>China, priority date {DEFAULT_PD}</strong>. A date is current
+          <strong>EB-1, China (mainland), priority date {DEFAULT_PD}</strong>. A date is current
           if the cut-off is C, or if your PD is on or before the cut-off.
           {onPdChange ? (
             <> Changing the PD here also moves the chart reference line.</>
